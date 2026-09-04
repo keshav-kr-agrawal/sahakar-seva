@@ -86,16 +86,16 @@ export default function HomePage() {
           
           {/* Institutional Trust Top Bar */}
           <div className="flex flex-wrap items-center justify-between gap-3 border-b border-[#e5e0d5] dark:border-[#223b2d] pb-4">
-            <div className="flex items-center gap-2.5 bg-[#ffffff] dark:bg-[#13221b] border border-[#ded8cb] dark:border-[#244230] px-3.5 py-1.5 rounded-full shadow-xs">
-              <span className="relative flex h-2.5 w-2.5">
+            <div className="flex items-center gap-2.5 bg-[#ffffff] dark:bg-[#13221b] border border-[#ded8cb] dark:border-[#244230] px-3.5 py-1.5 rounded-full shadow-xs max-w-full">
+              <span className="relative flex h-2.5 w-2.5 shrink-0">
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#2d6243] opacity-75"></span>
                 <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-[#193927]"></span>
               </span>
-              <span className="text-xs font-bold text-[#193927] dark:text-[#9bc2ad]">
+              <span className="text-[11px] sm:text-xs font-bold text-[#193927] dark:text-[#9bc2ad] truncate">
                 Ministry of Cooperation • SIH PS 26089
               </span>
-              <span className="text-[#cbbeaa] dark:text-[#335641]">|</span>
-              <span className="text-xs text-[#a84422] font-extrabold">NCCT Certified Platform</span>
+              <span className="text-[#cbbeaa] dark:text-[#335641] shrink-0">|</span>
+              <span className="text-[11px] sm:text-xs text-[#a84422] font-extrabold shrink-0">NCCT Certified</span>
             </div>
 
             <div className="hidden md:flex items-center gap-4 text-xs font-semibold text-[#506155] dark:text-[#a3b8ac]">
@@ -125,7 +125,7 @@ export default function HomePage() {
                   A Democratic Alternative to Urban Company
                 </div>
 
-                <h1 className="text-4xl sm:text-5xl lg:text-[3.85rem] font-extrabold text-[#14221b] dark:text-[#f4f2ea] font-serif leading-[1.12] tracking-tight">
+                <h1 className="text-3xl sm:text-5xl lg:text-[3.85rem] font-extrabold text-[#14221b] dark:text-[#f4f2ea] font-serif leading-[1.14] tracking-tight">
                   Household Services, <br />
                   <span className="text-[#193927] dark:text-[#8caea0] italic font-medium underline decoration-[#a84422]/40 decoration-wavy">
                     Owned by the Craftsmen.

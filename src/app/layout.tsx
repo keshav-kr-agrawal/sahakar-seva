@@ -42,8 +42,8 @@ export default function RootLayout({
       </head>
       <body className="antialiased min-h-screen flex flex-col justify-between selection:bg-[#224c34] selection:text-[#f9f7f2]">
         <AppProvider>
-          {/* Unified Sticky Header Container */}
-          <div className="sticky top-0 z-40 w-full">
+          {/* Unified Sticky Header Container with solid opaque background */}
+          <div className="sticky top-0 z-50 w-full bg-[#ffffff] dark:bg-[#11261a] shadow-xs">
             <RoleSwitcherBar />
             <Navbar />
           </div>
