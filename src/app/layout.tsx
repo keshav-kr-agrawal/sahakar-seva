@@ -8,7 +8,7 @@ import Toast from "@/components/ui/Toast";
 
 export const metadata: Metadata = {
   title: "SahakarSeva | Cooperative Digital Marketplace for Household Services",
-  description: "Built for Ministry of Cooperation / NCCT (SIH PS 26089). Empowering gig workers with cooperative equity, transparent wage ledgers, and democratic rate setting.",
+  description: "Built for Ministry of Cooperation / NCCT (SIH PS 26089). Empowering gig workers through worker-owned cooperatives, democratic rate governance, and 100% itemized wage transparency.",
 };
 
 export default function RootLayout({
@@ -22,11 +22,11 @@ export default function RootLayout({
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link
-          href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family-[#133e2b]+Sans:ital,wght@0,300..800;1,300..800&display=swap"
+          href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..800;1,9..144,400..800&family=Plus+Jakarta+Sans:ital,wght@0,300..800;1,300..800&display=swap"
           rel="stylesheet"
         />
       </head>
-      <body className="antialiased min-h-screen flex flex-col justify-between selection:bg-[#2d7a52] selection:text-white">
+      <body className="antialiased min-h-screen flex flex-col justify-between selection:bg-[#224c34] selection:text-[#f9f7f2]">
         <AppProvider>
           {/* Top Demo Bar for Hackathon Judges */}
           <RoleSwitcherBar />

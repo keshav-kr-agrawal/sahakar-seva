@@ -24,8 +24,7 @@ export default function CollectiveBargainingPage() {
   const [proposedRateSlider, setProposedRateSlider] = useState(390);
   const [hasVoted, setHasVoted] = useState(false);
 
-  // Dynamic projection calculations based on rate slider
-  const monthlyHours = 140; // 140 billable hours per month
+  const monthlyHours = 140;
   const baseMonthlyIncome = Math.round(selectedTopic.currentRate * monthlyHours * 0.82);
   const projectedMonthlyIncome = Math.round(proposedRateSlider * monthlyHours * 0.82);
   const incomeIncrease = projectedMonthlyIncome - baseMonthlyIncome;
@@ -42,10 +41,10 @@ export default function CollectiveBargainingPage() {
 
   const handleCastVote = (voteType: "YES" | "NO") => {
     setHasVoted(true);
-    confetti({ particleCount: 80, spread: 60, origin: { y: 0.6 } });
+    confetti({ particleCount: 70, spread: 55, origin: { y: 0.6 } });
     showToast(
-      "Vote Cast Successfully",
-      `You voted ${voteType} for ${selectedTopic.category} rate proposal of ₹${proposedRateSlider}/hr.`
+      "Vote Recorded",
+      `Ballot cast for ${selectedTopic.category} proposed tariff of ₹${proposedRateSlider}/hr.`
     );
   };
 
@@ -54,18 +53,18 @@ export default function CollectiveBargainingPage() {
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-10">
       {/* Header Banner */}
-      <div className="bg-gradient-to-r from-[#133e2b] via-[#1e5338] to-[#2d7a52] text-white p-8 rounded-3xl shadow-2xl space-y-3">
+      <div className="bg-[#193927] text-[#f9f7f2] p-8 rounded-3xl shadow-elevated space-y-3 border border-[#2d6243]">
         <div className="flex items-center gap-2">
-          <span className="bg-[#c85a32] text-white text-xs font-bold px-3 py-1 rounded-full flex items-center gap-1">
+          <span className="bg-[#a84422] text-white text-[10px] font-bold px-3 py-1 rounded-full flex items-center gap-1.5 uppercase tracking-wider">
             <Users className="w-3.5 h-3.5" /> Democratic Governance Engine
           </span>
-          <span className="text-xs text-emerald-200">1 Worker = 1 Vote Equity Rule</span>
+          <span className="text-xs text-[#c5d7cc]">1 Worker = 1 Vote Cooperative Constitution</span>
         </div>
-        <h1 className="text-3xl sm:text-4xl font-extrabold font-serif text-emerald-100">
+        <h1 className="text-3xl sm:text-4xl font-extrabold font-serif text-[#f9f7f2]">
           Worker Collective Rate Bargaining
         </h1>
-        <p className="text-xs sm:text-sm text-emerald-200/80 max-w-2xl">
-          On SahakarSeva, rates are never set unilaterally by corporate algorithms. Workers propose, simulate earnings impact, and democratically vote on minimum category tariffs.
+        <p className="text-xs sm:text-sm text-[#dce8e1] max-w-2xl leading-relaxed">
+          Tariffs on SahakarSeva are never decided by unilateral algorithms. Craftsmen simulate the household market impact, propose base rates, and democratically vote on category minimums.
         </p>
       </div>
 
@@ -73,31 +72,31 @@ export default function CollectiveBargainingPage() {
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
         {/* Left Column: Interactive Rate Slider & Dynamic Projection */}
         <div className="lg:col-span-7 space-y-6">
-          <div className="bg-white dark:bg-[#15241d] rounded-3xl p-6 sm:p-8 border border-[#133e2b]/15 shadow-xl space-y-6">
-            <div className="flex items-center justify-between border-b border-gray-100 dark:border-gray-800 pb-4">
+          <div className="bg-[#ffffff] dark:bg-[#13221b] rounded-3xl p-6 sm:p-8 border border-[#e2ded4] dark:border-[#233b2e] shadow-soft space-y-6">
+            <div className="flex items-center justify-between border-b border-[#ede9e1] dark:border-[#233b2e] pb-4">
               <div>
-                <span className="text-[11px] font-bold text-[#c85a32] uppercase tracking-wider bg-[#fceee9] px-2.5 py-0.5 rounded-full">
-                  Interactive Rate Simulator
+                <span className="text-[10px] font-bold text-[#a84422] uppercase tracking-wider bg-[#f6e8e2] px-2.5 py-0.5 rounded-full">
+                  Interactive Tariff Simulator
                 </span>
-                <h3 className="text-xl font-bold text-[#133e2b] dark:text-emerald-300 font-serif mt-1">
-                  Adjust Minimum Base Hourly Rate
+                <h3 className="text-xl font-bold text-[#14221b] dark:text-[#edebe4] font-serif mt-1.5">
+                  Adjust Minimum Base Tariff
                 </h3>
               </div>
               <div className="text-right">
-                <div className="text-xs text-muted-foreground">Current Base Tariff</div>
-                <div className="text-xl font-extrabold text-gray-500 line-through">
+                <div className="text-xs text-[#7c8d82]">Current Category Base</div>
+                <div className="text-lg font-extrabold text-[#7c8d82] line-through">
                   ₹{selectedTopic.currentRate}/hr
                 </div>
               </div>
             </div>
 
-            {/* INTERACTIVE RATE SLIDER CONTROL */}
-            <div className="space-y-4 p-6 bg-[#f4efe8]/70 dark:bg-emerald-950/60 rounded-2xl border border-[#133e2b]/10">
+            {/* Interactive Rate Slider */}
+            <div className="space-y-3.5 p-6 bg-[#f9f7f2] dark:bg-[#182c22] rounded-2xl border border-[#ede9e1] dark:border-[#244230]">
               <div className="flex items-center justify-between">
-                <span className="text-xs font-bold text-gray-700 dark:text-gray-300">
+                <span className="text-xs font-bold text-[#14221b] dark:text-[#edebe4]">
                   Proposed Minimum Base Rate:
                 </span>
-                <span className="text-3xl font-extrabold text-[#2d7a52]">
+                <span className="text-3xl font-extrabold text-[#193927] dark:text-[#8caea0] font-mono">
                   ₹{proposedRateSlider}/hr
                 </span>
               </div>
@@ -109,47 +108,47 @@ export default function CollectiveBargainingPage() {
                 step="10"
                 value={proposedRateSlider}
                 onChange={(e) => setProposedRateSlider(Number(e.target.value))}
-                className="w-full h-3 bg-gray-300 dark:bg-gray-700 rounded-lg appearance-none cursor-pointer accent-[#2d7a52]"
+                className="w-full h-2.5 bg-[#e2ded4] dark:bg-[#1c3025] rounded-lg appearance-none cursor-pointer accent-[#193927]"
               />
 
-              <div className="flex justify-between text-[11px] font-semibold text-muted-foreground">
+              <div className="flex justify-between text-[11px] font-semibold text-[#7c8d82]">
                 <span>₹320/hr (Current Low)</span>
-                <span>₹420/hr (Recommended)</span>
-                <span>₹520/hr (High Demand)</span>
+                <span>₹420/hr (Coop Recommended)</span>
+                <span>₹520/hr (Peak Monsoon)</span>
               </div>
             </div>
 
-            {/* DYNAMIC EARNINGS PROJECTION STATS */}
+            {/* Dynamic Earnings Projection Cards */}
             <div className="grid grid-cols-2 gap-4">
-              <div className="p-4 bg-emerald-50 dark:bg-emerald-950/80 rounded-2xl border border-emerald-300 dark:border-emerald-700 space-y-1">
-                <div className="text-xs text-muted-foreground font-semibold">Projected Monthly Take-Home (82%)</div>
-                <div className="text-2xl font-extrabold text-[#2d7a52]">{formatINR(projectedMonthlyIncome)}</div>
-                <div className="text-[10px] text-emerald-700 dark:text-emerald-300 font-bold">
+              <div className="p-4 bg-[#f0f5f2] dark:bg-[#152a1e] rounded-2xl border border-[#c5d7cc] dark:border-[#2a4e39] space-y-1">
+                <div className="text-[11px] text-[#506155] dark:text-[#a3b8ac] font-semibold">Projected Monthly Take-Home (82%)</div>
+                <div className="text-2xl font-extrabold text-[#193927] dark:text-[#edebe4]">{formatINR(projectedMonthlyIncome)}</div>
+                <div className="text-[10px] text-[#224c34] dark:text-[#a3c9b4] font-bold">
                   +₹{incomeIncrease} monthly income boost
                 </div>
               </div>
 
-              <div className="p-4 bg-[#f4efe8] dark:bg-emerald-950/40 rounded-2xl border border-gray-200 dark:border-gray-800 space-y-1">
-                <div className="text-xs text-muted-foreground font-semibold">Coop Welfare Pool Contribution</div>
-                <div className="text-2xl font-extrabold text-amber-600">
+              <div className="p-4 bg-[#fdf4e8] dark:bg-[#2d2214] rounded-2xl border border-[#eedbc2] dark:border-[#523d24] space-y-1">
+                <div className="text-[11px] text-[#7c8d82] font-semibold">Cooperative Welfare Pool Contribution</div>
+                <div className="text-2xl font-extrabold text-[#855b16] dark:text-[#dec08a]">
                   {formatINR(Math.round(proposedRateSlider * 140 * 0.08))}
                 </div>
-                <div className="text-[10px] text-muted-foreground">8% emergency monsoon reserve</div>
+                <div className="text-[10px] text-[#7c8d82]">8% emergency distress buffer</div>
               </div>
             </div>
 
-            {/* LIVE RECHARTS PROJECTION GRAPH */}
+            {/* Recharts Curve */}
             <div className="space-y-2 pt-2">
-              <h4 className="text-xs font-bold text-gray-700 dark:text-gray-300">
+              <h4 className="text-xs font-bold text-[#14221b] dark:text-[#edebe4]">
                 Monthly Income Growth Curve vs Proposed Tariff
               </h4>
               <div className="h-48 w-full">
                 <ResponsiveContainer width="100%" height="100%">
                   <LineChart data={projectionGraphData}>
-                    <XAxis dataKey="rate" stroke="#888888" fontSize={11} tickFormatter={(v) => `₹${v}`} />
-                    <YAxis stroke="#888888" fontSize={11} tickFormatter={(v) => `₹${v}`} />
+                    <XAxis dataKey="rate" stroke="#7c8d82" fontSize={11} tickFormatter={(v) => `₹${v}`} />
+                    <YAxis stroke="#7c8d82" fontSize={11} tickFormatter={(v) => `₹${v}`} />
                     <Tooltip formatter={(value) => [`₹${value}`, "Monthly Take-Home"]} />
-                    <Line type="monotone" dataKey="monthlyTakeHome" stroke="#2d7a52" strokeWidth={3} dot={{ r: 4 }} />
+                    <Line type="monotone" dataKey="monthlyTakeHome" stroke="#224c34" strokeWidth={2.5} dot={{ r: 3.5 }} />
                   </LineChart>
                 </ResponsiveContainer>
               </div>
@@ -159,52 +158,52 @@ export default function CollectiveBargainingPage() {
 
         {/* Right Column: Democratic Voting Panel */}
         <div className="lg:col-span-5 space-y-6">
-          <div className="bg-white dark:bg-[#15241d] rounded-3xl p-6 border border-[#133e2b]/15 shadow-xl space-y-6">
-            <div className="border-b border-gray-100 dark:border-gray-800 pb-4">
-              <span className="text-[10px] font-bold bg-[#2d7a52] text-white px-2 py-0.5 rounded-full">
+          <div className="bg-[#ffffff] dark:bg-[#13221b] rounded-3xl p-6 sm:p-7 border border-[#e2ded4] dark:border-[#233b2e] shadow-soft space-y-6">
+            <div className="border-b border-[#ede9e1] dark:border-[#233b2e] pb-4">
+              <span className="text-[10px] font-bold bg-[#f0f5f2] text-[#224c34] border border-[#c5d7cc] px-2.5 py-0.5 rounded-full">
                 Active Ballot #{selectedTopic.id}
               </span>
-              <h3 className="text-xl font-bold text-[#133e2b] dark:text-emerald-300 font-serif mt-1">
+              <h3 className="text-xl font-bold text-[#14221b] dark:text-[#edebe4] font-serif mt-1.5">
                 {selectedTopic.category} Guild Ballot
               </h3>
-              <p className="text-xs text-muted-foreground mt-1">{selectedTopic.description}</p>
+              <p className="text-xs text-[#7c8d82] mt-1 leading-relaxed">{selectedTopic.description}</p>
             </div>
 
             {/* Voting Progress Tally Bar */}
             <div className="space-y-2">
               <div className="flex justify-between text-xs font-bold">
-                <span className="text-[#2d7a52]">YES Votes: {selectedTopic.currentYesVotes} ({yesPercentage}%)</span>
-                <span className="text-muted-foreground">{selectedTopic.totalEligibleVotes} Eligible Guild Members</span>
+                <span className="text-[#224c34] dark:text-[#a3c9b4]">YES Votes: {selectedTopic.currentYesVotes} ({yesPercentage}%)</span>
+                <span className="text-[#7c8d82]">{selectedTopic.totalEligibleVotes} Eligible Guild Members</span>
               </div>
-              <div className="h-3 w-full bg-gray-200 dark:bg-gray-800 rounded-full overflow-hidden flex">
-                <div style={{ width: `${yesPercentage}%` }} className="bg-[#2d7a52] h-full" />
-                <div style={{ width: `${100 - yesPercentage}%` }} className="bg-rose-500 h-full" />
+              <div className="h-3 w-full bg-[#f4f0e8] dark:bg-[#1c3025] rounded-full overflow-hidden flex p-0.5">
+                <div style={{ width: `${yesPercentage}%` }} className="bg-[#224c34] h-full rounded-l-full" />
+                <div style={{ width: `${100 - yesPercentage}%` }} className="bg-[#872828] h-full rounded-r-full" />
               </div>
-              <div className="flex justify-between text-[10px] text-muted-foreground font-semibold">
+              <div className="flex justify-between text-[10px] text-[#7c8d82] font-semibold">
                 <span>Quorum Met (60% Minimum)</span>
                 <span>{selectedTopic.daysRemaining} Days Remaining</span>
               </div>
             </div>
 
-            {/* Cast Vote Action */}
+            {/* Cast Vote Controls */}
             <div className="space-y-3 pt-2">
               {hasVoted ? (
-                <div className="p-4 bg-[#e8f4ed] text-[#133e2b] dark:bg-emerald-950 dark:text-emerald-300 rounded-2xl text-center space-y-1 font-bold text-xs">
-                  <CheckCircle2 className="w-6 h-6 text-[#2d7a52] mx-auto" />
-                  <div>Your Vote is Cast & Recorded on Cooperative Blockchain</div>
+                <div className="p-4 bg-[#f0f5f2] text-[#193927] dark:bg-[#152a1e] dark:text-[#dce8e1] rounded-2xl text-center space-y-1 font-bold text-xs border border-[#c5d7cc]">
+                  <CheckCircle2 className="w-5 h-5 text-[#224c34] mx-auto" />
+                  <div>Ballot Sealed & Recorded on Cooperative Ledger</div>
                 </div>
               ) : (
                 <div className="grid grid-cols-2 gap-3">
                   <button
                     onClick={() => handleCastVote("YES")}
-                    className="py-3 rounded-xl bg-[#133e2b] hover:bg-[#1e5338] text-white font-extrabold text-xs shadow-lg transition flex items-center justify-center gap-1"
+                    className="py-3 rounded-xl bg-[#193927] hover:bg-[#224c34] text-white font-bold text-xs shadow-xs transition flex items-center justify-center gap-1.5"
                   >
-                    <CheckCircle2 className="w-4 h-4 text-emerald-400" />
+                    <CheckCircle2 className="w-4 h-4 text-[#dce8e1]" />
                     <span>Vote YES for ₹{proposedRateSlider}</span>
                   </button>
                   <button
                     onClick={() => handleCastVote("NO")}
-                    className="py-3 rounded-xl bg-gray-100 hover:bg-gray-200 dark:bg-gray-800 text-gray-700 dark:text-gray-300 font-extrabold text-xs transition"
+                    className="py-3 rounded-xl bg-[#f4f0e8] hover:bg-[#e8f0ea] dark:bg-[#182c22] text-[#506155] dark:text-[#a3b8ac] font-bold text-xs transition border border-[#ede9e1]"
                   >
                     <span>Vote NO (Keep ₹350)</span>
                   </button>

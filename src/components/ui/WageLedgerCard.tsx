@@ -2,7 +2,7 @@
 
 import React from "react";
 import { formatINR } from "@/lib/utils";
-import { ShieldCheck, HeartPulse, HardHat, Server, Check, ArrowRight } from "lucide-react";
+import { ShieldCheck, HeartPulse, HardHat, Server, Check, ArrowRight, Lock } from "lucide-react";
 import { motion } from "framer-motion";
 
 interface WageLedgerProps {
@@ -30,102 +30,102 @@ export default function WageLedgerCard({
 
   const items = [
     {
-      title: "Worker Direct Payout",
+      title: "Worker Direct Take-Home",
       subtitle: `Direct to ${workerName}'s cooperative bank ledger`,
       percentage: "82%",
       amount: workerPay,
-      icon: <HardHat className="w-4 h-4 text-emerald-600" />,
-      color: "bg-emerald-500",
-      textColor: "text-emerald-700 dark:text-emerald-300",
+      icon: <HardHat className="w-4 h-4 text-[#224c34]" />,
+      barColor: "bg-[#224c34]",
+      tagStyle: "bg-[#f0f5f2] text-[#193927] border-[#c5d7cc]",
     },
     {
       title: "Group Health & Accident Insurance",
-      subtitle: "Includes hospitalization & disability cover for family",
+      subtitle: "Includes hospitalization & accidental disability cover",
       percentage: "5%",
       amount: insurancePay,
-      icon: <HeartPulse className="w-4 h-4 text-rose-500" />,
-      color: "bg-rose-500",
-      textColor: "text-rose-700 dark:text-rose-300",
+      icon: <HeartPulse className="w-4 h-4 text-[#872828]" />,
+      barColor: "bg-[#872828]",
+      tagStyle: "bg-[#f9ecec] text-[#872828] border-[#f0d5d5]",
     },
     {
-      title: "Cooperative Emergency Welfare Pool",
-      subtitle: "Monsoon distress fund, pension reserve & child education",
+      title: "Cooperative Welfare & Emergency Fund",
+      subtitle: "Monsoon distress safety buffer & pension equity reserve",
       percentage: "8%",
       amount: coopFundPay,
-      icon: <ShieldCheck className="w-4 h-4 text-amber-500" />,
-      color: "bg-amber-500",
-      textColor: "text-amber-700 dark:text-amber-300",
+      icon: <ShieldCheck className="w-4 h-4 text-[#855b16]" />,
+      barColor: "bg-[#855b16]",
+      tagStyle: "bg-[#fdf4e8] text-[#855b16] border-[#eedbc2]",
     },
     {
-      title: "Platform Infrastructure & Cloud Server",
-      subtitle: "Open-source app maintenance & SMS alerts",
+      title: "Open Platform Infrastructure & Ops",
+      subtitle: "Open-source cloud servers, SMS dispatch & verification",
       percentage: "5%",
       amount: platformFee,
-      icon: <Server className="w-4 h-4 text-sky-500" />,
-      color: "bg-sky-500",
-      textColor: "text-sky-700 dark:text-sky-300",
+      icon: <Server className="w-4 h-4 text-[#3c6152]" />,
+      barColor: "bg-[#527964]",
+      tagStyle: "bg-[#edf4f0] text-[#1c402c] border-[#cfe0d6]",
     },
   ];
 
   return (
-    <div className="bg-white dark:bg-[#15241d] rounded-2xl p-6 border border-[#133e2b]/15 shadow-xl space-y-6">
+    <div className="bg-[#ffffff] dark:bg-[#13221b] rounded-3xl p-6 sm:p-7 border border-[#e2ded4] dark:border-[#233b2e] shadow-soft space-y-6">
       {/* Header Badge */}
-      <div className="flex flex-wrap items-center justify-between gap-2 border-b border-gray-100 dark:border-gray-800 pb-4">
+      <div className="flex flex-wrap items-center justify-between gap-3 border-b border-[#ede9e1] dark:border-[#233b2e] pb-4">
         <div>
-          <span className="text-[11px] font-bold tracking-wider text-[#c85a32] uppercase bg-[#fceee9] px-2.5 py-0.5 rounded-full inline-block mb-1">
-            Verified Itemized Wage Ledger
+          <span className="text-[10px] font-bold tracking-wider text-[#a84422] uppercase bg-[#f6e8e2] dark:bg-[#331d16] border border-[#e8cebe] dark:border-[#522c20] px-3 py-0.5 rounded-full inline-block mb-1.5">
+            NCCT Certified Wage Ledger
           </span>
-          <h3 className="text-lg font-bold text-[#133e2b] dark:text-emerald-300 font-serif">
-            100% Transparent Fee Breakdown
+          <h3 className="text-xl font-bold text-[#14221b] dark:text-[#edebe4] font-serif">
+            100% Itemized Fee Breakdown
           </h3>
         </div>
         <div className="text-right">
-          <span className="text-xs text-muted-foreground">Total Service Fare</span>
-          <div className="text-2xl font-extrabold text-[#133e2b] dark:text-emerald-400">
+          <span className="text-xs text-[#7c8d82]">Total Service Fare</span>
+          <div className="text-2xl font-extrabold text-[#193927] dark:text-[#8caea0] tracking-tight">
             {formatINR(totalAmount)}
           </div>
         </div>
       </div>
 
       {/* Progress Bar Visualizing 82% / 5% / 8% / 5% */}
-      <div className="space-y-1.5">
-        <div className="h-3 w-full rounded-full bg-gray-100 dark:bg-gray-800 overflow-hidden flex">
-          <div style={{ width: "82%" }} className="bg-[#2d7a52] h-full" title="Worker Pay: 82%" />
-          <div style={{ width: "5%" }} className="bg-rose-500 h-full" title="Insurance: 5%" />
-          <div style={{ width: "8%" }} className="bg-amber-500 h-full" title="Coop Fund: 8%" />
-          <div style={{ width: "5%" }} className="bg-sky-500 h-full" title="Platform: 5%" />
+      <div className="space-y-2">
+        <div className="h-3.5 w-full rounded-full bg-[#f4f0e8] dark:bg-[#1c3025] overflow-hidden flex p-0.5">
+          <div style={{ width: "82%" }} className="bg-[#224c34] h-full rounded-l-full" title="Worker Take-Home: 82%" />
+          <div style={{ width: "5%" }} className="bg-[#872828] h-full" title="Health Insurance: 5%" />
+          <div style={{ width: "8%" }} className="bg-[#855b16] h-full" title="Coop Welfare Pool: 8%" />
+          <div style={{ width: "5%" }} className="bg-[#527964] h-full rounded-r-full" title="Platform Operations: 5%" />
         </div>
-        <div className="flex items-center justify-between text-[11px] text-muted-foreground font-medium px-0.5">
-          <span className="text-emerald-700 font-bold">82% Take-Home Pay</span>
-          <span>18% Collective Pool & Ops</span>
+        <div className="flex items-center justify-between text-[11px] text-[#506155] dark:text-[#a3b8ac] font-semibold px-0.5">
+          <span className="text-[#193927] dark:text-[#8caea0] font-bold">82% Direct Worker Payout</span>
+          <span>18% Collective Pool & Platform</span>
         </div>
       </div>
 
       {/* Itemized Line-by-Line List */}
-      <div className="space-y-3 pt-2">
+      <div className="space-y-2.5 pt-1">
         {items.map((item, index) => (
           <motion.div
             key={item.title}
-            initial={animated ? { opacity: 0, x: -10 } : false}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ delay: index * 0.1 }}
-            className="flex items-center justify-between p-3 rounded-xl bg-[#f4efe8]/60 dark:bg-emerald-950/40 border border-[#133e2b]/5 hover:border-[#133e2b]/20 transition"
+            initial={animated ? { opacity: 0, y: 6 } : false}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: index * 0.08 }}
+            className="flex items-center justify-between p-3.5 rounded-2xl bg-[#f9f7f2] dark:bg-[#182c22] border border-[#ede9e1] dark:border-[#244230] hover:border-[#d8d3c7] transition"
           >
-            <div className="flex items-center gap-3">
-              <div className="p-2 rounded-lg bg-white dark:bg-[#15241d] shadow-sm">
+            <div className="flex items-center gap-3.5">
+              <div className="p-2 rounded-xl bg-[#ffffff] dark:bg-[#13221b] border border-[#e2ded4] dark:border-[#233b2e] shadow-xs">
                 {item.icon}
               </div>
               <div>
-                <div className="text-xs font-bold text-gray-900 dark:text-gray-100 flex items-center gap-2">
+                <div className="text-xs font-bold text-[#14221b] dark:text-[#edebe4] flex items-center gap-2">
                   <span>{item.title}</span>
-                  <span className={`text-[10px] font-extrabold px-1.5 py-0.2 rounded ${item.textColor}`}>
-                    ({item.percentage})
+                  <span className={`text-[10px] font-bold px-2 py-0.2 rounded-full border ${item.tagStyle}`}>
+                    {item.percentage}
                   </span>
                 </div>
-                <div className="text-[11px] text-muted-foreground">{item.subtitle}</div>
+                <div className="text-[11px] text-[#7c8d82] mt-0.5">{item.subtitle}</div>
               </div>
             </div>
-            <div className="text-sm font-bold text-[#133e2b] dark:text-emerald-400">
+            <div className="text-sm font-bold text-[#193927] dark:text-[#8caea0] font-mono">
               {formatINR(item.amount)}
             </div>
           </motion.div>
@@ -134,24 +134,24 @@ export default function WageLedgerCard({
 
       {/* Comparison with Private Apps */}
       {showComparison && (
-        <div className="mt-4 p-4 rounded-xl bg-gradient-to-r from-emerald-900/10 via-emerald-800/5 to-transparent border border-emerald-800/20 text-xs space-y-2">
-          <div className="flex items-center justify-between font-bold text-[#133e2b] dark:text-emerald-300">
+        <div className="mt-4 p-4.5 rounded-2xl bg-[#f4f0e8] dark:bg-[#182c22] border border-[#e2ded4] dark:border-[#244230] text-xs space-y-2.5">
+          <div className="flex items-center justify-between font-bold text-[#193927] dark:text-[#edebe4]">
             <span className="flex items-center gap-1.5">
-              <Check className="w-4 h-4 text-emerald-600" />
-              <span>SahakarSeva Equity Advantage</span>
+              <Check className="w-4 h-4 text-[#2d6243]" />
+              <span>Cooperative Equity Advantage</span>
             </span>
-            <span className="text-[#c85a32] font-bold">+₹{workerPay - corporateWorkerPay} more in worker's pocket</span>
+            <span className="text-[#a84422] font-extrabold">+₹{workerPay - corporateWorkerPay} more in worker's pocket</span>
           </div>
           <div className="grid grid-cols-2 gap-3 pt-1 text-[11px]">
-            <div className="p-2 bg-emerald-50 dark:bg-emerald-950/60 rounded-lg border border-emerald-200 dark:border-emerald-800">
-              <div className="font-semibold text-emerald-800 dark:text-emerald-300">SahakarSeva (Coop)</div>
-              <div className="text-emerald-900 dark:text-emerald-100 font-bold text-sm">{formatINR(workerPay)} to worker</div>
-              <div className="text-muted-foreground">Only 5% platform fee</div>
+            <div className="p-3 bg-[#ffffff] dark:bg-[#13221b] rounded-xl border border-[#c5d7cc] dark:border-[#2d6243]/40">
+              <div className="font-bold text-[#193927] dark:text-[#8caea0]">SahakarSeva Cooperative</div>
+              <div className="text-[#193927] dark:text-[#edebe4] font-extrabold text-sm mt-0.5">{formatINR(workerPay)} to worker</div>
+              <div className="text-[#7c8d82] text-[10px] mt-0.5">5% capped open platform fee</div>
             </div>
-            <div className="p-2 bg-gray-100 dark:bg-gray-800/60 rounded-lg border border-gray-200 dark:border-gray-700">
-              <div className="font-semibold text-gray-700 dark:text-gray-300">Private Tech App</div>
-              <div className="text-gray-900 dark:text-gray-100 font-bold text-sm">{formatINR(corporateWorkerPay)} to worker</div>
-              <div className="text-rose-600 font-semibold">35% corporate cut</div>
+            <div className="p-3 bg-[#fdfdfd] dark:bg-[#13221b]/60 rounded-xl border border-[#ede9e1] dark:border-[#233b2e]">
+              <div className="font-semibold text-[#506155] dark:text-[#a3b8ac]">Private Corporate Apps</div>
+              <div className="text-[#742d16] dark:text-[#de8a70] font-extrabold text-sm mt-0.5">{formatINR(corporateWorkerPay)} to worker</div>
+              <div className="text-[#872828] text-[10px] mt-0.5">Up to 35% corporate margin cut</div>
             </div>
           </div>
         </div>

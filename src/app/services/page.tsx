@@ -9,16 +9,13 @@ import TrustBadge from "@/components/ui/TrustBadge";
 import InteractiveMap from "@/components/ui/InteractiveMap";
 import {
   Search,
-  Filter,
   MapPin,
   Star,
   ShieldCheck,
   Grid,
   Map as MapIcon,
-  SlidersHorizontal,
-  ArrowRight,
-  PlusCircle,
-  CheckCircle2
+  ChevronRight,
+  SlidersHorizontal
 } from "lucide-react";
 import { motion } from "framer-motion";
 
@@ -59,22 +56,22 @@ function ServicesContent() {
 
   const handleBookWorker = (worker: WorkerProfile) => {
     setSelectedWorkerForBooking(worker);
-    showToast("Worker Selected", `${worker.name} added to your booking context.`);
+    showToast("Worker Selected", `${worker.name} queued for booking.`);
   };
 
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-8">
       {/* Header Title & Subtitle */}
-      <div className="space-y-3">
-        <div className="flex items-center gap-2 text-xs font-bold text-[#c85a32] uppercase tracking-wider bg-[#fceee9] px-3 py-1 rounded-full w-fit">
-          <ShieldCheck className="w-4 h-4" />
+      <div className="space-y-2">
+        <div className="flex items-center gap-2 text-xs font-bold text-[#a84422] uppercase tracking-wider bg-[#f6e8e2] px-3 py-1 rounded-full w-fit">
+          <ShieldCheck className="w-3.5 h-3.5" />
           <span>NCCT Certified Cooperative Guild Marketplace</span>
         </div>
-        <h1 className="text-3xl sm:text-4xl font-extrabold text-[#0f241a] dark:text-emerald-100 font-serif">
-          Find Verified Cooperative Guild Workers
+        <h1 className="text-3xl sm:text-4xl font-extrabold text-[#14221b] dark:text-[#edebe4] font-serif">
+          Verified Cooperative Guild Craftsmen
         </h1>
-        <p className="text-sm text-muted-foreground max-w-2xl">
-          Direct access to local skilled workers with transparent 82% take-home pay, group insurance, and RWA verified credentials.
+        <p className="text-xs sm:text-sm text-[#506155] dark:text-[#a3b8ac] max-w-2xl leading-relaxed">
+          Direct access to local skilled workers with transparent 82% direct take-home pay, collective medical insurance, and RWA verified credentials.
         </p>
       </div>
 
@@ -84,8 +81,8 @@ function ServicesContent() {
           onClick={() => setActiveCategory("all")}
           className={`px-4 py-2 rounded-xl text-xs font-bold whitespace-nowrap transition border ${
             activeCategory === "all"
-              ? "bg-[#133e2b] text-white border-[#133e2b]"
-              : "bg-white dark:bg-[#15241d] text-gray-700 dark:text-gray-300 border-gray-200 dark:border-gray-800 hover:bg-[#e8f4ed]"
+              ? "bg-[#193927] text-[#f9f7f2] border-[#193927]"
+              : "bg-[#ffffff] dark:bg-[#13221b] text-[#506155] dark:text-[#a3b8ac] border-[#e2ded4] dark:border-[#233b2e] hover:bg-[#f4f0e8]"
           }`}
         >
           All Guilds ({WORKERS.length})
@@ -96,8 +93,8 @@ function ServicesContent() {
             onClick={() => setActiveCategory(cat.id)}
             className={`px-4 py-2 rounded-xl text-xs font-bold whitespace-nowrap transition border ${
               activeCategory === cat.id
-                ? "bg-[#133e2b] text-white border-[#133e2b]"
-                : "bg-white dark:bg-[#15241d] text-gray-700 dark:text-gray-300 border-gray-200 dark:border-gray-800 hover:bg-[#e8f4ed]"
+                ? "bg-[#193927] text-[#f9f7f2] border-[#193927]"
+                : "bg-[#ffffff] dark:bg-[#13221b] text-[#506155] dark:text-[#a3b8ac] border-[#e2ded4] dark:border-[#233b2e] hover:bg-[#f4f0e8]"
             }`}
           >
             {cat.name}
@@ -106,111 +103,113 @@ function ServicesContent() {
       </div>
 
       {/* Control Bar: Search, Filters, Sort, View Toggle */}
-      <div className="bg-white dark:bg-[#15241d] p-4 rounded-2xl border border-[#133e2b]/15 shadow-md flex flex-wrap items-center justify-between gap-4">
-        <div className="flex items-center gap-2 flex-1 min-w-[240px] bg-[#f4efe8] dark:bg-emerald-950/60 px-3 py-2 rounded-xl border border-gray-200 dark:border-gray-800">
-          <Search className="w-4 h-4 text-muted-foreground" />
+      <div className="bg-[#ffffff] dark:bg-[#13221b] p-4 rounded-3xl border border-[#e2ded4] dark:border-[#233b2e] shadow-soft flex flex-wrap items-center justify-between gap-4">
+        <div className="flex items-center gap-2.5 flex-1 min-w-[240px] bg-[#f9f7f2] dark:bg-[#182c22] px-3.5 py-2.5 rounded-xl border border-[#ede9e1] dark:border-[#244230]">
+          <Search className="w-4 h-4 text-[#7c8d82]" />
           <input
             type="text"
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            placeholder="Search worker by name, skill, or service..."
+            placeholder="Filter by name, specialty, or repair task..."
             className="w-full bg-transparent text-xs font-medium focus:outline-none"
           />
         </div>
 
-        <div className="flex flex-wrap items-center gap-3">
-          <label className="flex items-center gap-1.5 text-xs font-semibold cursor-pointer select-none">
+        <div className="flex flex-wrap items-center gap-4">
+          <label className="flex items-center gap-2 text-xs font-semibold cursor-pointer select-none">
             <input
               type="checkbox"
               checked={womenSafeOnly}
               onChange={(e) => setWomenSafeOnly(e.target.checked)}
-              className="accent-[#c85a32] rounded"
+              className="w-4 h-4 accent-[#a84422] rounded cursor-pointer"
             />
-            <span className="text-rose-700 dark:text-rose-300">Women-Safe Badge Only</span>
+            <span className="text-[#872828] dark:text-[#e4a8a8]">Women-Safe Guild Only</span>
           </label>
 
-          <label className="flex items-center gap-1.5 text-xs font-semibold cursor-pointer select-none">
+          <label className="flex items-center gap-2 text-xs font-semibold cursor-pointer select-none">
             <input
               type="checkbox"
               checked={heritageOnly}
               onChange={(e) => setHeritageOnly(e.target.checked)}
-              className="accent-amber-600 rounded"
+              className="w-4 h-4 accent-[#855b16] rounded cursor-pointer"
             />
-            <span className="text-amber-800 dark:text-amber-300">Heritage Artisans</span>
+            <span className="text-[#855b16] dark:text-[#dec08a]">Heritage Artisans</span>
           </label>
 
-          <div className="flex items-center gap-1 text-xs font-semibold text-muted-foreground">
+          {/* Sort Dropdown */}
+          <div className="flex items-center gap-1.5 text-xs font-semibold text-[#7c8d82]">
             <span>Sort:</span>
             <select
               value={sortBy}
               onChange={(e) => setSortBy(e.target.value as any)}
-              className="bg-[#f4efe8] dark:bg-emerald-950 px-2.5 py-1.5 rounded-lg text-xs font-bold text-[#133e2b] dark:text-emerald-300 focus:outline-none"
+              className="bg-[#f9f7f2] dark:bg-[#182c22] px-3 py-1.5 rounded-lg text-xs font-bold text-[#193927] dark:text-[#dce8e1] focus:outline-none border border-[#ede9e1] dark:border-[#244230]"
             >
               <option value="rating">Highest Rated</option>
               <option value="distance">Nearest Distance</option>
-              <option value="price">Price Low → High</option>
+              <option value="price">Price: Low to High</option>
             </select>
           </div>
 
-          <div className="flex items-center bg-[#f4efe8] dark:bg-emerald-950 p-1 rounded-xl border border-gray-200 dark:border-gray-800">
+          {/* View Toggle */}
+          <div className="flex items-center bg-[#f4f0e8] dark:bg-[#182c22] p-1 rounded-xl border border-[#e2ded4] dark:border-[#233b2e]">
             <button
               onClick={() => setViewMode("grid")}
-              className={`p-1.5 rounded-lg text-xs font-bold flex items-center gap-1 transition ${
-                viewMode === "grid" ? "bg-[#133e2b] text-white shadow-sm" : "text-gray-600 dark:text-gray-400"
+              className={`px-3 py-1 rounded-lg text-xs font-bold flex items-center gap-1.5 transition ${
+                viewMode === "grid" ? "bg-[#193927] text-white shadow-xs" : "text-[#7c8d82]"
               }`}
             >
               <Grid className="w-3.5 h-3.5" />
-              <span className="hidden sm:inline">Grid</span>
+              <span>Grid</span>
             </button>
             <button
               onClick={() => setViewMode("map")}
-              className={`p-1.5 rounded-lg text-xs font-bold flex items-center gap-1 transition ${
-                viewMode === "map" ? "bg-[#133e2b] text-white shadow-sm" : "text-gray-600 dark:text-gray-400"
+              className={`px-3 py-1 rounded-lg text-xs font-bold flex items-center gap-1.5 transition ${
+                viewMode === "map" ? "bg-[#193927] text-white shadow-xs" : "text-[#7c8d82]"
               }`}
             >
               <MapIcon className="w-3.5 h-3.5" />
-              <span className="hidden sm:inline">Map</span>
+              <span>Map</span>
             </button>
           </div>
         </div>
       </div>
 
-      {/* MAIN VIEW AREA: GRID OR MAP */}
+      {/* Main View: Grid or Map */}
       {viewMode === "map" ? (
         <div className="space-y-4">
           <InteractiveMap mode="pins" height="h-[550px]" onSelectWorker={handleBookWorker} />
-          <p className="text-xs text-muted-foreground text-center">
-            Click on any worker pin on the map to view detailed profile and initiate booking.
+          <p className="text-xs text-[#7c8d82] text-center">
+            Click on any worker pin to inspect credentials and initiate transparent wage booking.
           </p>
         </div>
       ) : (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {filteredWorkers.length === 0 ? (
-            <div className="col-span-full bg-white dark:bg-[#15241d] p-12 rounded-2xl text-center space-y-3 border border-dashed border-gray-300">
-              <h3 className="text-lg font-bold text-gray-700 dark:text-gray-300 font-serif">
+            <div className="col-span-full bg-[#ffffff] dark:bg-[#13221b] p-12 rounded-3xl text-center space-y-3 border border-dashed border-[#e2ded4]">
+              <h3 className="text-lg font-bold text-[#14221b] dark:text-[#edebe4] font-serif">
                 No Cooperative Workers Found
               </h3>
-              <p className="text-xs text-muted-foreground">
-                Try loosening your search query or selecting a different service category.
+              <p className="text-xs text-[#7c8d82]">
+                Try adjusting your search criteria or toggling all guilds.
               </p>
             </div>
           ) : (
             filteredWorkers.map((w) => (
               <motion.div
                 key={w.id}
-                initial={{ opacity: 0, y: 15 }}
+                initial={{ opacity: 0, y: 12 }}
                 animate={{ opacity: 1, y: 0 }}
-                className="bg-white dark:bg-[#15241d] rounded-2xl border border-[#133e2b]/15 shadow-md hover:shadow-xl transition space-y-4 p-5 flex flex-col justify-between"
+                className="bg-[#ffffff] dark:bg-[#13221b] rounded-3xl border border-[#e2ded4] dark:border-[#233b2e] shadow-soft p-6 flex flex-col justify-between space-y-4 hover:border-[#193927] transition"
               >
-                <div className="space-y-3">
+                <div className="space-y-3.5">
                   <div className="flex items-start gap-4">
                     <div className="relative">
                       <img
                         src={w.avatar}
                         alt={w.name}
-                        className="w-16 h-16 rounded-2xl object-cover border-2 border-[#2d7a52]"
+                        className="w-16 h-16 rounded-2xl object-cover border-2 border-[#224c34]"
                       />
-                      <span className="absolute -bottom-1 -right-1 bg-[#133e2b] text-white text-[9px] font-extrabold px-1.5 py-0.2 rounded">
+                      <span className="absolute -bottom-1 -right-1 bg-[#193927] text-white text-[9px] font-extrabold px-1.5 py-0.2 rounded-md">
                         T{w.verificationTier}
                       </span>
                     </div>
@@ -218,19 +217,21 @@ function ServicesContent() {
                     <div className="flex-1">
                       <div className="flex items-center justify-between">
                         <Link href={`/worker/${w.id}`} className="hover:underline">
-                          <h3 className="text-base font-bold text-[#133e2b] dark:text-emerald-300 font-serif">
+                          <h3 className="text-base font-bold text-[#14221b] dark:text-[#edebe4] font-serif">
                             {w.name}
                           </h3>
                         </Link>
-                        <span className="text-sm font-extrabold text-[#2d7a52]">₹{w.hourlyRate}/hr</span>
+                        <span className="text-sm font-extrabold text-[#193927] dark:text-[#8caea0]">
+                          ₹{w.hourlyRate}/hr
+                        </span>
                       </div>
 
-                      <div className="text-xs text-muted-foreground flex items-center gap-1 mt-0.5">
-                        <MapPin className="w-3 h-3 text-[#c85a32]" />
-                        <span>{w.locality} ({w.distanceKm} km)</span>
+                      <div className="text-xs text-[#7c8d82] flex items-center gap-1 mt-0.5">
+                        <MapPin className="w-3.5 h-3.5 text-[#a84422]" />
+                        <span>{w.locality} ({w.distanceKm} km away)</span>
                       </div>
 
-                      <div className="flex flex-wrap items-center gap-1 pt-1.5">
+                      <div className="flex flex-wrap items-center gap-1.5 pt-1.5">
                         <TrustBadge type="verified" />
                         {w.isWomenSafe && <TrustBadge type="women_safe" />}
                         {w.isHeritageSkill && <TrustBadge type="heritage" />}
@@ -238,43 +239,47 @@ function ServicesContent() {
                     </div>
                   </div>
 
-                  <div className="flex flex-wrap gap-1 pt-1">
+                  {/* Skills Tags */}
+                  <div className="flex flex-wrap gap-1">
                     {w.skills.map((skill) => (
                       <span
                         key={skill}
-                        className="text-[10px] bg-[#f4efe8] dark:bg-emerald-950/60 text-[#133e2b] dark:text-emerald-300 px-2 py-0.5 rounded font-medium"
+                        className="text-[10px] bg-[#f4f0e8] dark:bg-[#182c22] text-[#193927] dark:text-[#dce8e1] px-2 py-0.5 rounded-md font-medium"
                       >
                         {skill}
                       </span>
                     ))}
                   </div>
 
-                  <p className="text-xs text-muted-foreground line-clamp-2 italic">"{w.bio}"</p>
+                  <p className="text-xs text-[#506155] dark:text-[#a3b8ac] line-clamp-2 italic bg-[#f9f7f2] dark:bg-[#182c22] p-3 rounded-xl border border-[#ede9e1] dark:border-[#244230]">
+                    "{w.bio}"
+                  </p>
                 </div>
 
-                <div className="pt-3 border-t border-gray-100 dark:border-gray-800 space-y-3">
+                {/* Card Footer Actions */}
+                <div className="pt-3 border-t border-[#ede9e1] dark:border-[#233b2e] space-y-3">
                   <div className="flex items-center justify-between text-xs">
-                    <div className="flex items-center gap-1 font-bold text-amber-600">
+                    <div className="flex items-center gap-1 font-bold text-[#855b16]">
                       <Star className="w-3.5 h-3.5 fill-current" />
                       <span>{w.rating}</span>
-                      <span className="text-muted-foreground font-normal">({w.reviewCount})</span>
+                      <span className="text-[#7c8d82] font-normal">({w.reviewCount} reviews)</span>
                     </div>
-                    <span className="text-[11px] text-emerald-700 dark:text-emerald-400 font-semibold">
-                      {w.jobsCompleted} Jobs Done
+                    <span className="text-[11px] text-[#224c34] dark:text-[#8caea0] font-semibold">
+                      {w.jobsCompleted} Jobs Completed
                     </span>
                   </div>
 
                   <div className="grid grid-cols-2 gap-2">
                     <Link
                       href={`/worker/${w.id}`}
-                      className="w-full bg-[#f4efe8] hover:bg-[#e8f4ed] dark:bg-emerald-950 dark:hover:bg-emerald-900 text-[#133e2b] dark:text-emerald-300 text-center py-2 rounded-xl text-xs font-bold transition"
+                      className="w-full bg-[#f4f0e8] hover:bg-[#e8f0ea] dark:bg-[#182c22] text-[#193927] dark:text-[#dce8e1] text-center py-2.5 rounded-xl text-xs font-bold transition border border-[#d8d3c7] dark:border-[#2a4a38]"
                     >
                       View Profile
                     </Link>
                     <Link
                       href={`/booking?workerId=${w.id}`}
                       onClick={() => handleBookWorker(w)}
-                      className="w-full bg-[#133e2b] hover:bg-[#1e5338] text-white text-center py-2 rounded-xl text-xs font-bold transition shadow-sm"
+                      className="w-full bg-[#193927] hover:bg-[#224c34] text-white text-center py-2.5 rounded-xl text-xs font-bold transition shadow-xs"
                     >
                       Book Now
                     </Link>
@@ -291,7 +296,7 @@ function ServicesContent() {
 
 export default function ServicesPage() {
   return (
-    <Suspense fallback={<div className="p-12 text-center text-xs text-muted-foreground">Loading Services Marketplace...</div>}>
+    <Suspense fallback={<div className="p-12 text-center text-xs text-[#7c8d82]">Loading Guild Marketplace...</div>}>
       <ServicesContent />
     </Suspense>
   );

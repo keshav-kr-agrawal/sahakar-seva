@@ -2,23 +2,23 @@
 
 import React from "react";
 import Link from "next/link";
-import { ArrowLeft, HardHat, Home } from "lucide-react";
+import { HardHat, Home } from "lucide-react";
 
 export default function NotFound() {
   return (
     <div className="max-w-xl mx-auto px-4 py-24 text-center space-y-6">
-      <div className="w-20 h-20 rounded-3xl bg-[#e8f4ed] text-[#133e2b] flex items-center justify-center mx-auto shadow-lg">
-        <HardHat className="w-10 h-10" />
+      <div className="w-16 h-16 rounded-3xl bg-[#f0f5f2] text-[#193927] border border-[#c5d7cc] flex items-center justify-center mx-auto shadow-xs">
+        <HardHat className="w-8 h-8" />
       </div>
 
       <div className="space-y-2">
-        <span className="text-xs font-bold text-[#c85a32] uppercase tracking-wider bg-[#fceee9] px-3 py-1 rounded-full">
+        <span className="text-[10px] font-bold text-[#a84422] uppercase tracking-wider bg-[#f6e8e2] px-3 py-1 rounded-full">
           404 Page Not Found
         </span>
-        <h1 className="text-3xl font-extrabold text-[#0f241a] dark:text-emerald-100 font-serif">
+        <h1 className="text-3xl font-extrabold text-[#14221b] dark:text-[#edebe4] font-serif">
           Service Route Under Construction
         </h1>
-        <p className="text-xs text-muted-foreground max-w-md mx-auto leading-relaxed">
+        <p className="text-xs text-[#7c8d82] max-w-md mx-auto leading-relaxed">
           The cooperative page or service guild route you requested does not exist or has been relocated.
         </p>
       </div>
@@ -26,14 +26,14 @@ export default function NotFound() {
       <div className="flex justify-center gap-3 pt-2">
         <Link
           href="/"
-          className="bg-[#133e2b] hover:bg-[#1e5338] text-white px-5 py-2.5 rounded-xl font-bold text-xs shadow-md transition flex items-center gap-2"
+          className="bg-[#193927] hover:bg-[#224c34] text-white px-5 py-2.5 rounded-xl font-bold text-xs shadow-xs transition flex items-center gap-2"
         >
           <Home className="w-4 h-4" />
           <span>Return Home</span>
         </Link>
         <Link
           href="/services"
-          className="bg-[#f4efe8] dark:bg-emerald-950 text-[#133e2b] dark:text-emerald-300 px-5 py-2.5 rounded-xl font-bold text-xs transition"
+          className="bg-[#f4f0e8] hover:bg-[#e8f0ea] dark:bg-[#182c22] text-[#193927] dark:text-[#dce8e1] px-5 py-2.5 rounded-xl font-bold text-xs transition border border-[#ede9e1]"
         >
           Explore Services
         </Link>

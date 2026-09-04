@@ -2,7 +2,7 @@
 
 import React from "react";
 import { useApp } from "@/context/AppContext";
-import { CheckCircle2, AlertCircle, Info, X } from "lucide-react";
+import { CheckCircle2, AlertCircle, Info } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
 export default function Toast() {
@@ -13,28 +13,28 @@ export default function Toast() {
       <AnimatePresence>
         {toastMessage && (
           <motion.div
-            initial={{ opacity: 0, y: 20, scale: 0.95 }}
+            initial={{ opacity: 0, y: 16, scale: 0.96 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
-            exit={{ opacity: 0, y: 10, scale: 0.95 }}
-            className={`pointer-events-auto p-4 rounded-xl shadow-2xl border flex items-start gap-3 backdrop-blur-md ${
+            exit={{ opacity: 0, y: 8, scale: 0.96 }}
+            className={`pointer-events-auto p-4 rounded-2xl shadow-elevated border flex items-start gap-3 backdrop-blur-md ${
               toastMessage.type === "warning"
-                ? "bg-amber-950/90 text-amber-100 border-amber-500/40"
+                ? "bg-[#20150d]/95 text-[#fdf4e8] border-[#6b421a]"
                 : toastMessage.type === "info"
-                ? "bg-[#133e2b]/95 text-white border-emerald-500/40"
-                : "bg-[#0d2c1e]/95 text-emerald-100 border-emerald-400/50"
+                ? "bg-[#0b1a12]/95 text-[#dce8e1] border-[#244230]"
+                : "bg-[#0b1a12]/95 text-[#dce8e1] border-[#2d6243]"
             }`}
           >
             {toastMessage.type === "warning" ? (
-              <AlertCircle className="w-5 h-5 text-amber-400 shrink-0 mt-0.5" />
+              <AlertCircle className="w-5 h-5 text-[#be522d] shrink-0 mt-0.5" />
             ) : toastMessage.type === "info" ? (
-              <Info className="w-5 h-5 text-sky-400 shrink-0 mt-0.5" />
+              <Info className="w-5 h-5 text-[#8caea0] shrink-0 mt-0.5" />
             ) : (
-              <CheckCircle2 className="w-5 h-5 text-emerald-400 shrink-0 mt-0.5" />
+              <CheckCircle2 className="w-5 h-5 text-[#4b7d5e] shrink-0 mt-0.5" />
             )}
 
             <div className="flex-1 space-y-0.5">
-              <h4 className="text-sm font-bold leading-tight">{toastMessage.title}</h4>
-              <p className="text-xs opacity-90 leading-relaxed">{toastMessage.desc}</p>
+              <h4 className="text-xs font-bold leading-tight tracking-tight">{toastMessage.title}</h4>
+              <p className="text-[11px] text-[#a3b8ac] leading-relaxed">{toastMessage.desc}</p>
             </div>
           </motion.div>
         )}

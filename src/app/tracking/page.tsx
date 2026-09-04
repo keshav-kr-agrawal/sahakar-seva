@@ -5,20 +5,14 @@ import Link from "next/link";
 import { useApp } from "@/context/AppContext";
 import InteractiveMap from "@/components/ui/InteractiveMap";
 import WageLedgerCard from "@/components/ui/WageLedgerCard";
-import TrustBadge from "@/components/ui/TrustBadge";
 import {
-  Navigation,
   PhoneCall,
   MessageSquare,
   ShieldCheck,
-  Phone,
   AlertTriangle,
-  Clock,
-  CheckCircle2,
-  ChevronRight,
-  Download
+  Download,
+  CheckCircle2
 } from "lucide-react";
-import { motion } from "framer-motion";
 
 export default function TrackingPage() {
   const { activeBooking, showToast } = useApp();
@@ -41,8 +35,8 @@ export default function TrackingPage() {
   const handleTriggerSos = () => {
     setSosTriggered(true);
     showToast(
-      "EMERGENCY SOS DISPATCHED",
-      "Live GPS coordinates sent to Police (112), SahakarSeva Women Safety Cell & RWA Security.",
+      "EMERGENCY DISPATCH ALERTED",
+      "Live GPS telemetry relayed to local police precinct, Mahila Safety Officer, and RWA gate security.",
       "warning"
     );
   };
@@ -51,111 +45,110 @@ export default function TrackingPage() {
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-8">
       {/* Header Bar */}
       <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
-        <div>
-          <span className="text-xs font-bold text-emerald-700 bg-emerald-100 px-3 py-1 rounded-full">
-            Booking Ref: {activeBooking?.id || "SS-784912"}
+        <div className="space-y-1">
+          <span className="text-[11px] font-bold text-[#193927] dark:text-[#8caea0] bg-[#f0f5f2] dark:bg-[#193225] border border-[#dce8e1] dark:border-[#244230] px-3 py-0.5 rounded-full">
+            Booking ID: {activeBooking?.id || "SS-784912"}
           </span>
-          <h1 className="text-3xl font-extrabold text-[#0f241a] dark:text-emerald-100 font-serif mt-1">
-            Live Worker Dispatch Tracking
+          <h1 className="text-3xl font-extrabold text-[#14221b] dark:text-[#edebe4] font-serif">
+            Live Worker Dispatch Telemetry
           </h1>
         </div>
 
-        {/* SOS Button */}
+        {/* SOS Emergency Check-in Button */}
         <button
           onClick={handleTriggerSos}
-          className={`flex items-center gap-2 px-4 py-2.5 rounded-xl font-extrabold text-xs shadow-lg transition ${
+          className={`flex items-center gap-2 px-4 py-2.5 rounded-xl font-bold text-xs transition shadow-xs ${
             sosTriggered
-              ? "bg-rose-700 text-white animate-pulse"
-              : "bg-[#c85a32] hover:bg-[#b24a24] text-white"
+              ? "bg-[#872828] text-white border border-[#9e3232]"
+              : "bg-[#a84422] hover:bg-[#8c381c] text-white"
           }`}
         >
           <AlertTriangle className="w-4 h-4" />
-          <span>{sosTriggered ? "SOS Active • Security Dispatched" : "Emergency SOS Check-in"}</span>
+          <span>{sosTriggered ? "SOS Active • Security Alerted" : "Emergency Safety SOS"}</span>
         </button>
       </div>
 
-      {/* Main Grid: Interactive Map + Tracking Sidebar */}
+      {/* Main Grid: Interactive Map + Sidebar */}
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
         {/* Map View Column */}
         <div className="lg:col-span-7 space-y-4">
           <InteractiveMap mode="tracking" activeWorker={worker as any} height="h-[520px]" />
 
-          {/* Safety Status Banner */}
-          <div className="bg-[#e8f4ed] dark:bg-emerald-950/80 p-4 rounded-2xl border border-[#133e2b]/15 flex items-center justify-between gap-3 text-xs">
-            <div className="flex items-center gap-2 text-[#133e2b] dark:text-emerald-300 font-semibold">
-              <ShieldCheck className="w-5 h-5 text-[#2d7a52]" />
-              <span>NCCT Live Safety Tracking Protocol Active</span>
+          {/* Safety Status Protocol Bar */}
+          <div className="bg-[#f0f5f2] dark:bg-[#152a1e] p-4 rounded-2xl border border-[#c5d7cc] dark:border-[#2a4e39] flex items-center justify-between gap-3 text-xs">
+            <div className="flex items-center gap-2 text-[#193927] dark:text-[#edebe4] font-semibold">
+              <ShieldCheck className="w-4 h-4 text-[#2d6243]" />
+              <span>NCCT Live Telemetry Protocol Active</span>
             </div>
-            <span className="text-[11px] text-muted-foreground">GPS Pinged 4s ago</span>
+            <span className="text-[11px] text-[#7c8d82]">GPS coordinates synced 4s ago</span>
           </div>
         </div>
 
-        {/* Worker & Receipt Sidebar */}
+        {/* Worker Dispatch Status Sidebar */}
         <div className="lg:col-span-5 space-y-6">
-          {/* Worker Dispatch Status Card */}
-          <div className="bg-white dark:bg-[#15241d] rounded-3xl p-6 border border-[#133e2b]/15 shadow-xl space-y-6">
-            <div className="flex items-start gap-4 border-b border-gray-100 dark:border-gray-800 pb-4">
+          <div className="bg-[#ffffff] dark:bg-[#13221b] rounded-3xl p-6 sm:p-7 border border-[#e2ded4] dark:border-[#233b2e] shadow-soft space-y-6">
+            <div className="flex items-start gap-4 border-b border-[#ede9e1] dark:border-[#233b2e] pb-4">
               <img
                 src={worker.avatar}
                 alt={worker.name}
-                className="w-16 h-16 rounded-2xl object-cover border-2 border-[#2d7a52]"
+                className="w-16 h-16 rounded-2xl object-cover border-2 border-[#224c34]"
               />
               <div className="flex-1 space-y-1">
-                <span className="text-[10px] font-bold bg-[#2d7a52] text-white px-2 py-0.5 rounded-full">
+                <span className="text-[10px] font-bold bg-[#f0f5f2] text-[#224c34] border border-[#c5d7cc] px-2.5 py-0.5 rounded-full">
                   Worker En Route
                 </span>
-                <h3 className="text-lg font-bold text-[#133e2b] dark:text-emerald-300 font-serif">
+                <h3 className="text-lg font-bold text-[#14221b] dark:text-[#edebe4] font-serif mt-0.5">
                   {worker.name}
                 </h3>
-                <div className="text-xs text-muted-foreground">★ {worker.rating} • Tier 3 Verified</div>
+                <div className="text-xs text-[#7c8d82]">★ {worker.rating} • Tier 3 RWA Verified</div>
               </div>
             </div>
 
-            {/* Quick Contact Buttons */}
+            {/* Contact Actions */}
             <div className="grid grid-cols-2 gap-3">
               <button
-                onClick={() => showToast("Simulated Call", `Calling ${worker.name}...`)}
-                className="bg-[#133e2b] hover:bg-[#1e5338] text-white py-2.5 rounded-xl text-xs font-bold flex items-center justify-center gap-2 shadow-sm transition"
+                onClick={() => showToast("Calling Worker", `Initiating phone call with ${worker.name}...`)}
+                className="bg-[#193927] hover:bg-[#224c34] text-white py-2.5 rounded-xl text-xs font-bold flex items-center justify-center gap-2 transition shadow-xs"
               >
-                <PhoneCall className="w-4 h-4" />
+                <PhoneCall className="w-3.5 h-3.5" />
                 <span>Call Worker</span>
               </button>
               <button
-                onClick={() => showToast("Chat Opened", `Chat session initialized with ${worker.name}`)}
-                className="bg-[#f4efe8] hover:bg-[#e8f4ed] dark:bg-emerald-950 text-[#133e2b] dark:text-emerald-300 py-2.5 rounded-xl text-xs font-bold flex items-center justify-center gap-2 transition"
+                onClick={() => showToast("Chat Initialized", `Chat session opened with ${worker.name}`)}
+                className="bg-[#f4f0e8] hover:bg-[#e8f0ea] dark:bg-[#182c22] text-[#193927] dark:text-[#dce8e1] py-2.5 rounded-xl text-xs font-bold flex items-center justify-center gap-2 transition border border-[#ede9e1]"
               >
-                <MessageSquare className="w-4 h-4" />
+                <MessageSquare className="w-3.5 h-3.5" />
                 <span>Chat</span>
               </button>
             </div>
 
             {/* Service Summary Details */}
             <div className="space-y-2 text-xs">
-              <div className="flex justify-between py-1 border-b border-gray-100 dark:border-gray-800">
-                <span className="text-muted-foreground">Service Category</span>
-                <span className="font-bold text-[#133e2b] dark:text-emerald-300">{activeBooking?.serviceCategory || "Electrical Services"}</span>
+              <div className="flex justify-between py-1.5 border-b border-[#ede9e1] dark:border-[#233b2e]">
+                <span className="text-[#7c8d82]">Service Category</span>
+                <span className="font-bold text-[#14221b] dark:text-[#edebe4]">{activeBooking?.serviceCategory || "Electrical Services"}</span>
               </div>
-              <div className="flex justify-between py-1 border-b border-gray-100 dark:border-gray-800">
-                <span className="text-muted-foreground">Scheduled Time</span>
-                <span className="font-bold text-[#133e2b] dark:text-emerald-300">{activeBooking?.scheduledTime || "10:30 AM Today"}</span>
+              <div className="flex justify-between py-1.5 border-b border-[#ede9e1] dark:border-[#233b2e]">
+                <span className="text-[#7c8d82]">Scheduled Window</span>
+                <span className="font-bold text-[#14221b] dark:text-[#edebe4]">{activeBooking?.scheduledTime || "10:30 AM Today"}</span>
               </div>
-              <div className="flex justify-between py-1 border-b border-gray-100 dark:border-gray-800">
-                <span className="text-muted-foreground">Location</span>
-                <span className="font-bold text-[#133e2b] dark:text-emerald-300">{activeBooking?.locality || "Koramangala 4th Block"}</span>
+              <div className="flex justify-between py-1.5 border-b border-[#ede9e1] dark:border-[#233b2e]">
+                <span className="text-[#7c8d82]">Service Address</span>
+                <span className="font-bold text-[#14221b] dark:text-[#edebe4]">{activeBooking?.locality || "Koramangala 4th Block"}</span>
               </div>
             </div>
           </div>
 
           {/* Wage Ledger Receipt Box */}
           <div className="space-y-3">
-            <div className="flex items-center justify-between text-xs font-bold text-gray-700 dark:text-gray-300">
+            <div className="flex items-center justify-between text-xs font-bold text-[#14221b] dark:text-[#edebe4]">
               <span>Itemized Wage Receipt</span>
               <button
-                onClick={() => showToast("Receipt Downloaded", "PDF receipt saved to your downloads.")}
-                className="text-[#2d7a52] hover:underline flex items-center gap-1"
+                onClick={() => showToast("Receipt Exported", "Wage ledger PDF generated and saved.")}
+                className="text-[#193927] dark:text-[#8caea0] hover:underline flex items-center gap-1.5"
               >
                 <Download className="w-3.5 h-3.5" />
-                <span>Download PDF</span>
+                <span>Export PDF</span>
               </button>
             </div>
             <WageLedgerCard totalAmount={activeBooking?.totalAmount || 448} workerName={worker.name} showComparison={false} />

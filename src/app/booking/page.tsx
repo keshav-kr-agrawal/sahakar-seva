@@ -5,7 +5,6 @@ import { useRouter, useSearchParams } from "next/navigation";
 import { useApp } from "@/context/AppContext";
 import { WORKERS, SERVICE_ADDONS, WorkerProfile } from "@/lib/mockData";
 import WageLedgerCard from "@/components/ui/WageLedgerCard";
-import TrustBadge from "@/components/ui/TrustBadge";
 import { formatINR } from "@/lib/utils";
 import confetti from "canvas-confetti";
 import {
@@ -15,13 +14,11 @@ import {
   Calendar,
   Clock,
   ShieldCheck,
-  Sparkles,
   CreditCard,
   QrCode,
   CheckCircle2,
   HardHat,
-  MapPin,
-  Plus
+  MapPin
 } from "lucide-react";
 import { motion } from "framer-motion";
 
@@ -65,8 +62,8 @@ function BookingContent() {
       setBookingSuccess(true);
       
       confetti({
-        particleCount: 100,
-        spread: 70,
+        particleCount: 80,
+        spread: 60,
         origin: { y: 0.6 },
       });
 
@@ -88,47 +85,47 @@ function BookingContent() {
 
       setActiveBooking(newBooking);
       showToast("Booking Confirmed!", `Itemized receipt generated for ${selectedWorker.name}`);
-    }, 2000);
+    }, 1800);
   };
 
   return (
     <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-8">
       {/* Page Title Header */}
       <div className="text-center space-y-2">
-        <span className="text-xs font-bold text-[#c85a32] uppercase tracking-wider bg-[#fceee9] px-3 py-1 rounded-full">
+        <span className="text-[10px] font-bold text-[#a84422] uppercase tracking-wider bg-[#f6e8e2] px-3 py-1 rounded-full">
           Cooperative Transparent Booking
         </span>
-        <h1 className="text-3xl font-extrabold text-[#0f241a] dark:text-emerald-100 font-serif">
+        <h1 className="text-3xl sm:text-4xl font-extrabold text-[#14221b] dark:text-[#edebe4] font-serif">
           Schedule & Itemized Wage Booking
         </h1>
       </div>
 
       {/* Stepper Progress Bar */}
       <div className="flex items-center justify-between relative max-w-xl mx-auto">
-        <div className="absolute top-1/2 left-0 right-0 h-1 bg-gray-200 dark:bg-gray-800 -z-10 -translate-y-1/2" />
+        <div className="absolute top-1/2 left-0 right-0 h-0.5 bg-[#e2ded4] dark:bg-[#233b2e] -z-10 -translate-y-1/2" />
         {[
           { step: 1, label: "Services" },
           { step: 2, label: "Worker" },
           { step: 3, label: "Schedule" },
           { step: 4, label: "Wage Ledger" },
-          { step: 5, label: "Payment" },
+          { step: 5, label: "Confirmation" },
         ].map((s) => {
           const isDone = currentStep > s.step;
           const isCurrent = currentStep === s.step;
           return (
-            <div key={s.step} className="flex flex-col items-center gap-1 bg-[#faf8f5] dark:bg-[#0e1813] px-2">
+            <div key={s.step} className="flex flex-col items-center gap-1 bg-[#f9f7f2] dark:bg-[#0d1712] px-2">
               <div
                 className={`w-8 h-8 rounded-full flex items-center justify-center text-xs font-bold transition ${
                   isDone
-                    ? "bg-[#2d7a52] text-white"
+                    ? "bg-[#224c34] text-white"
                     : isCurrent
-                    ? "bg-[#133e2b] text-white ring-4 ring-[#e8f4ed]"
-                    : "bg-gray-200 dark:bg-gray-800 text-gray-500"
+                    ? "bg-[#193927] text-white ring-4 ring-[#dce8e1]"
+                    : "bg-[#f4f0e8] text-[#7c8d82] border border-[#e2ded4]"
                 }`}
               >
-                {isDone ? <Check className="w-4 h-4" /> : s.step}
+                {isDone ? <Check className="w-3.5 h-3.5" /> : s.step}
               </div>
-              <span className={`text-[10px] font-semibold ${isCurrent ? "text-[#133e2b] dark:text-emerald-300 font-bold" : "text-muted-foreground"}`}>
+              <span className={`text-[10px] font-semibold ${isCurrent ? "text-[#193927] dark:text-[#8caea0] font-bold" : "text-[#7c8d82]"}`}>
                 {s.label}
               </span>
             </div>
@@ -136,17 +133,17 @@ function BookingContent() {
         })}
       </div>
 
-      {/* STEP CONTENT CONTAINER */}
-      <div className="bg-white dark:bg-[#15241d] rounded-3xl p-6 sm:p-8 border border-[#133e2b]/15 shadow-xl space-y-6">
-        {/* STEP 1: SERVICE & ADD-ON BUNDLES */}
+      {/* Step Content Container */}
+      <div className="bg-[#ffffff] dark:bg-[#13221b] rounded-3xl p-6 sm:p-8 border border-[#e2ded4] dark:border-[#233b2e] shadow-soft space-y-6">
+        {/* STEP 1: SERVICE & ADD-ONS */}
         {currentStep === 1 && (
           <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="space-y-6">
             <div>
-              <h2 className="text-xl font-bold text-[#133e2b] dark:text-emerald-300 font-serif">
-                Select Service Add-ons & AI Coop Bundles
+              <h2 className="text-xl font-bold text-[#14221b] dark:text-[#edebe4] font-serif">
+                Select Service Add-ons & Cooperative Bundles
               </h2>
-              <p className="text-xs text-muted-foreground">
-                Combining add-on services reduces worker travel distance and unlocks coop bundle discounts.
+              <p className="text-xs text-[#7c8d82] mt-0.5">
+                Bundling multiple household check-ups reduces worker transit travel and unlocks direct discounts.
               </p>
             </div>
 
@@ -159,29 +156,29 @@ function BookingContent() {
                     onClick={() => toggleAddon(addon.id)}
                     className={`p-4 rounded-2xl border cursor-pointer transition flex items-start justify-between gap-3 ${
                       isSelected
-                        ? "bg-[#e8f4ed] border-[#2d7a52] dark:bg-emerald-950/80"
-                        : "bg-[#f4efe8]/50 border-gray-200 dark:border-gray-800 hover:border-gray-300"
+                        ? "bg-[#f0f5f2] border-[#224c34] dark:bg-[#152a1e]"
+                        : "bg-[#f9f7f2] border-[#ede9e1] hover:border-[#d8d3c7]"
                     }`}
                   >
                     <div className="space-y-1">
                       <div className="flex items-center gap-2">
-                        <span className="text-xs font-bold text-gray-900 dark:text-gray-100">{addon.title}</span>
-                        <span className="text-[10px] bg-[#c85a32] text-white px-1.5 py-0.2 rounded font-bold">
+                        <span className="text-xs font-bold text-[#14221b] dark:text-[#edebe4]">{addon.title}</span>
+                        <span className="text-[10px] bg-[#f6e8e2] text-[#a84422] border border-[#e8cebe] px-1.5 py-0.2 rounded-full font-bold">
                           {addon.discountPercentage}% OFF
                         </span>
                       </div>
-                      <p className="text-[11px] text-muted-foreground">{addon.description}</p>
-                      <div className="text-xs font-extrabold text-[#133e2b] dark:text-emerald-400">
+                      <p className="text-[11px] text-[#7c8d82]">{addon.description}</p>
+                      <div className="text-xs font-extrabold text-[#193927] dark:text-[#8caea0]">
                         +₹{addon.price}
                       </div>
                     </div>
 
                     <div
-                      className={`w-6 h-6 rounded-full flex items-center justify-center border transition ${
-                        isSelected ? "bg-[#2d7a52] text-white border-[#2d7a52]" : "border-gray-300"
+                      className={`w-5 h-5 rounded-full flex items-center justify-center border transition ${
+                        isSelected ? "bg-[#224c34] text-white border-[#224c34]" : "border-[#d8d3c7]"
                       }`}
                     >
-                      {isSelected && <Check className="w-3.5 h-3.5" />}
+                      {isSelected && <Check className="w-3 h-3" />}
                     </div>
                   </div>
                 );
@@ -194,11 +191,11 @@ function BookingContent() {
         {currentStep === 2 && (
           <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="space-y-6">
             <div>
-              <h2 className="text-xl font-bold text-[#133e2b] dark:text-emerald-300 font-serif">
-                Confirm Service Worker
+              <h2 className="text-xl font-bold text-[#14221b] dark:text-[#edebe4] font-serif">
+                Confirm Assigned Cooperative Craftsman
               </h2>
-              <p className="text-xs text-muted-foreground">
-                You can keep the matched worker or select another verified guild member.
+              <p className="text-xs text-[#7c8d82] mt-0.5">
+                Keep the matched neighborhood worker or choose another verified guild member.
               </p>
             </div>
 
@@ -211,15 +208,15 @@ function BookingContent() {
                     onClick={() => setSelectedWorker(w)}
                     className={`p-4 rounded-2xl border cursor-pointer transition flex items-center gap-4 ${
                       isSelected
-                        ? "bg-[#e8f4ed] border-[#2d7a52] dark:bg-emerald-950/80"
-                        : "bg-[#f4efe8]/50 border-gray-200 dark:border-gray-800"
+                        ? "bg-[#f0f5f2] border-[#224c34] dark:bg-[#152a1e]"
+                        : "bg-[#f9f7f2] border-[#ede9e1] hover:border-[#d8d3c7]"
                     }`}
                   >
-                    <img src={w.avatar} alt={w.name} className="w-14 h-14 rounded-2xl object-cover border-2 border-[#2d7a52]" />
+                    <img src={w.avatar} alt={w.name} className="w-14 h-14 rounded-2xl object-cover border-2 border-[#224c34]" />
                     <div className="flex-1 space-y-0.5">
-                      <h4 className="text-xs font-bold text-gray-900 dark:text-gray-100">{w.name}</h4>
-                      <div className="text-[11px] text-muted-foreground">★ {w.rating} • {w.locality}</div>
-                      <div className="text-xs font-extrabold text-[#2d7a52]">₹{w.hourlyRate}/hr</div>
+                      <h4 className="text-xs font-bold text-[#14221b] dark:text-[#edebe4]">{w.name}</h4>
+                      <div className="text-[11px] text-[#7c8d82]">★ {w.rating} • {w.locality}</div>
+                      <div className="text-xs font-extrabold text-[#193927] dark:text-[#8caea0]">₹{w.hourlyRate}/hr</div>
                     </div>
                   </div>
                 );
@@ -232,26 +229,26 @@ function BookingContent() {
         {currentStep === 3 && (
           <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="space-y-6">
             <div>
-              <h2 className="text-xl font-bold text-[#133e2b] dark:text-emerald-300 font-serif">
-                Select Arrival Date & Time Slot
+              <h2 className="text-xl font-bold text-[#14221b] dark:text-[#edebe4] font-serif">
+                Select Arrival Date & Window
               </h2>
-              <p className="text-xs text-muted-foreground">
-                Guaranteed arrival within 15 minutes of your selected time slot.
+              <p className="text-xs text-[#7c8d82] mt-0.5">
+                Guaranteed arrival within 15 minutes of your selected time window.
               </p>
             </div>
 
             <div className="space-y-4">
               <div className="space-y-2">
-                <label className="text-xs font-bold text-gray-700 dark:text-gray-300">Date</label>
+                <label className="text-xs font-bold text-[#14221b] dark:text-[#edebe4]">Date</label>
                 <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
                   {["Today", "Tomorrow", "Saturday", "Sunday"].map((d) => (
                     <button
                       key={d}
                       onClick={() => setScheduledDate(d)}
-                      className={`py-3 px-3 rounded-xl text-xs font-bold transition border ${
+                      className={`py-2.5 px-3 rounded-xl text-xs font-bold transition border ${
                         scheduledDate === d
-                          ? "bg-[#133e2b] text-white border-[#133e2b]"
-                          : "bg-[#f4efe8] text-gray-700 dark:bg-emerald-950/60 dark:text-gray-300"
+                          ? "bg-[#193927] text-white border-[#193927]"
+                          : "bg-[#f4f0e8] text-[#506155] border-[#ede9e1] hover:bg-[#e8f0ea]"
                       }`}
                     >
                       {d}
@@ -261,7 +258,7 @@ function BookingContent() {
               </div>
 
               <div className="space-y-2">
-                <label className="text-xs font-bold text-gray-700 dark:text-gray-300">Time Slot</label>
+                <label className="text-xs font-bold text-[#14221b] dark:text-[#edebe4]">Time Window</label>
                 <div className="grid grid-cols-3 sm:grid-cols-5 gap-2">
                   {["09:00 AM", "10:30 AM", "01:30 PM", "04:00 PM", "06:30 PM"].map((t) => (
                     <button
@@ -269,8 +266,8 @@ function BookingContent() {
                       onClick={() => setScheduledTime(t)}
                       className={`py-2 px-2 rounded-xl text-xs font-bold transition border ${
                         scheduledTime === t
-                          ? "bg-[#c85a32] text-white border-[#c85a32]"
-                          : "bg-[#f4efe8] text-gray-700 dark:bg-emerald-950/60 dark:text-gray-300"
+                          ? "bg-[#a84422] text-white border-[#a84422]"
+                          : "bg-[#f4f0e8] text-[#506155] border-[#ede9e1] hover:bg-[#e8f0ea]"
                       }`}
                     >
                       {t}
@@ -286,11 +283,11 @@ function BookingContent() {
         {currentStep === 4 && (
           <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="space-y-6">
             <div>
-              <h2 className="text-xl font-bold text-[#133e2b] dark:text-emerald-300 font-serif">
+              <h2 className="text-xl font-bold text-[#14221b] dark:text-[#edebe4] font-serif">
                 Verified Itemized Wage Transparency Ledger
               </h2>
-              <p className="text-xs text-muted-foreground">
-                Before paying, review exactly how your fare is distributed to {selectedWorker.name} and the cooperative safety pool.
+              <p className="text-xs text-[#7c8d82] mt-0.5">
+                Before confirming, review the exact mathematical allocation of your fare to {selectedWorker.name} and the cooperative safety reserve.
               </p>
             </div>
 
@@ -298,44 +295,44 @@ function BookingContent() {
           </motion.div>
         )}
 
-        {/* STEP 5: MOCK PAYMENT & CONFIRMATION */}
+        {/* STEP 5: PAYMENT METHOD & SUCCESS */}
         {currentStep === 5 && (
           <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="space-y-6">
             {!bookingSuccess ? (
               <div className="space-y-6">
                 <div>
-                  <h2 className="text-xl font-bold text-[#133e2b] dark:text-emerald-300 font-serif">
+                  <h2 className="text-xl font-bold text-[#14221b] dark:text-[#edebe4] font-serif">
                     Select Payment Method
                   </h2>
-                  <p className="text-xs text-muted-foreground">
-                    Simulation payment mode — no real card or money will be deducted.
+                  <p className="text-xs text-[#7c8d82] mt-0.5">
+                    Simulation demo mode — no actual charge will be executed.
                   </p>
                 </div>
 
                 <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
                   {[
-                    { id: "upi", label: "UPI Instant QR", icon: <QrCode className="w-5 h-5 text-[#2d7a52]" /> },
-                    { id: "card", label: "Debit/Credit Card", icon: <CreditCard className="w-5 h-5 text-sky-600" /> },
-                    { id: "cash", label: "Cash After Service", icon: <HardHat className="w-5 h-5 text-amber-600" /> },
+                    { id: "upi", label: "UPI Instant QR", icon: <QrCode className="w-5 h-5 text-[#224c34]" /> },
+                    { id: "card", label: "Debit/Credit Card", icon: <CreditCard className="w-5 h-5 text-[#506155]" /> },
+                    { id: "cash", label: "Cash After Service", icon: <HardHat className="w-5 h-5 text-[#855b16]" /> },
                   ].map((pm) => (
                     <button
                       key={pm.id}
                       onClick={() => setPaymentMethod(pm.id as any)}
                       className={`p-4 rounded-2xl border text-center space-y-2 transition flex flex-col items-center ${
                         paymentMethod === pm.id
-                          ? "bg-[#e8f4ed] border-[#2d7a52] dark:bg-emerald-950/80 font-bold"
-                          : "bg-[#f4efe8]/50 border-gray-200 dark:border-gray-800"
+                          ? "bg-[#f0f5f2] border-[#224c34] dark:bg-[#152a1e] font-bold"
+                          : "bg-[#f9f7f2] border-[#ede9e1]"
                       }`}
                     >
                       {pm.icon}
-                      <span className="text-xs">{pm.label}</span>
+                      <span className="text-xs text-[#14221b] dark:text-[#edebe4]">{pm.label}</span>
                     </button>
                   ))}
                 </div>
 
-                <div className="p-4 bg-[#f4efe8] dark:bg-emerald-950/60 rounded-2xl flex items-center justify-between text-sm">
-                  <span>Grand Total (All Inclusive)</span>
-                  <span className="text-xl font-extrabold text-[#133e2b] dark:text-emerald-300">
+                <div className="p-4 bg-[#f4f0e8] dark:bg-[#182c22] rounded-2xl flex items-center justify-between text-sm">
+                  <span className="text-[#506155] dark:text-[#a3b8ac]">Total Fare Payable (All Inclusive):</span>
+                  <span className="text-xl font-extrabold text-[#193927] dark:text-[#8caea0]">
                     {formatINR(grandTotal)}
                   </span>
                 </div>
@@ -343,48 +340,48 @@ function BookingContent() {
                 <button
                   onClick={handleConfirmBooking}
                   disabled={isProcessingPayment}
-                  className="w-full bg-[#133e2b] hover:bg-[#1e5338] text-white py-4 rounded-2xl font-extrabold text-base shadow-xl transition flex items-center justify-center gap-2"
+                  className="w-full bg-[#193927] hover:bg-[#224c34] text-white py-3.5 rounded-2xl font-bold text-sm shadow-soft transition flex items-center justify-center gap-2"
                 >
                   {isProcessingPayment ? (
-                    <span className="animate-pulse">Generating Wage Ledger & Confirming...</span>
+                    <span>Allocating Wage Ledger & Confirming...</span>
                   ) : (
                     <>
-                      <span>Pay {formatINR(grandTotal)} & Confirm Booking</span>
-                      <ChevronRight className="w-5 h-5" />
+                      <span>Pay {formatINR(grandTotal)} & Generate Ledger</span>
+                      <ChevronRight className="w-4 h-4" />
                     </>
                   )}
                 </button>
               </div>
             ) : (
-              /* SUCCESS STATE */
+              /* CONFIRMATION SUCCESS STATE */
               <div className="text-center py-8 space-y-6">
-                <div className="w-20 h-20 rounded-full bg-[#e8f4ed] text-[#2d7a52] flex items-center justify-center mx-auto shadow-lg animate-bounce">
-                  <CheckCircle2 className="w-12 h-12" />
+                <div className="w-16 h-16 rounded-full bg-[#f0f5f2] text-[#224c34] border border-[#c5d7cc] flex items-center justify-center mx-auto shadow-xs">
+                  <CheckCircle2 className="w-10 h-10" />
                 </div>
 
                 <div className="space-y-2">
-                  <span className="text-xs font-bold text-emerald-700 bg-emerald-100 px-3 py-1 rounded-full">
-                    Booking Confirmed • Receipt Generated
+                  <span className="text-[11px] font-bold text-[#224c34] bg-[#f0f5f2] border border-[#c5d7cc] px-3 py-1 rounded-full">
+                    Booking Confirmed • Wage Ledger Active
                   </span>
-                  <h2 className="text-3xl font-extrabold text-[#133e2b] dark:text-emerald-300 font-serif">
+                  <h2 className="text-3xl font-extrabold text-[#14221b] dark:text-[#edebe4] font-serif">
                     Worker Dispatch En Route!
                   </h2>
-                  <p className="text-xs text-muted-foreground max-w-md mx-auto">
-                    {selectedWorker.name} has accepted your booking for {scheduledDate} at {scheduledTime}.
+                  <p className="text-xs text-[#506155] dark:text-[#a3b8ac] max-w-md mx-auto">
+                    {selectedWorker.name} has received and accepted your booking for {scheduledDate} at {scheduledTime}.
                   </p>
                 </div>
 
-                <div className="flex flex-wrap justify-center gap-4 pt-4">
+                <div className="flex flex-wrap justify-center gap-3 pt-3">
                   <button
                     onClick={() => router.push("/tracking")}
-                    className="bg-[#c85a32] hover:bg-[#b24a24] text-white px-6 py-3 rounded-xl font-extrabold text-xs shadow-lg transition flex items-center gap-2"
+                    className="bg-[#a84422] hover:bg-[#8c381c] text-white px-6 py-2.5 rounded-xl font-bold text-xs shadow-xs transition flex items-center gap-2"
                   >
-                    <span>View Live GPS Tracking</span>
+                    <span>View Live GPS Telemetry</span>
                     <ChevronRight className="w-4 h-4" />
                   </button>
                   <button
                     onClick={() => router.push("/customer")}
-                    className="bg-[#f4efe8] dark:bg-emerald-950 text-[#133e2b] dark:text-emerald-300 px-6 py-3 rounded-xl font-bold text-xs transition"
+                    className="bg-[#f4f0e8] hover:bg-[#e8f0ea] dark:bg-[#182c22] text-[#193927] dark:text-[#dce8e1] px-6 py-2.5 rounded-xl font-bold text-xs transition border border-[#ede9e1]"
                   >
                     View My Dashboard
                   </button>
@@ -394,13 +391,13 @@ function BookingContent() {
           </motion.div>
         )}
 
-        {/* STEPPER NAV BUTTONS */}
+        {/* Stepper Navigation Controls */}
         {!bookingSuccess && (
-          <div className="flex items-center justify-between pt-6 border-t border-gray-100 dark:border-gray-800">
+          <div className="flex items-center justify-between pt-6 border-t border-[#ede9e1] dark:border-[#233b2e]">
             <button
               onClick={() => setCurrentStep(Math.max(1, currentStep - 1))}
               disabled={currentStep === 1}
-              className="px-4 py-2 rounded-xl text-xs font-bold text-gray-600 disabled:opacity-30 hover:bg-gray-100 flex items-center gap-1"
+              className="px-4 py-2 rounded-xl text-xs font-bold text-[#7c8d82] disabled:opacity-30 hover:bg-[#f4f0e8] flex items-center gap-1"
             >
               <ChevronLeft className="w-4 h-4" />
               <span>Previous</span>
@@ -409,7 +406,7 @@ function BookingContent() {
             {currentStep < 5 && (
               <button
                 onClick={() => setCurrentStep(currentStep + 1)}
-                className="bg-[#133e2b] hover:bg-[#1e5338] text-white px-6 py-2.5 rounded-xl text-xs font-bold flex items-center gap-1 shadow-md transition"
+                className="bg-[#193927] hover:bg-[#224c34] text-white px-6 py-2.5 rounded-xl text-xs font-bold flex items-center gap-1 shadow-xs transition"
               >
                 <span>Continue Step {currentStep + 1}</span>
                 <ChevronRight className="w-4 h-4" />
@@ -424,7 +421,7 @@ function BookingContent() {
 
 export default function BookingPage() {
   return (
-    <Suspense fallback={<div className="p-12 text-center text-xs text-muted-foreground">Loading Booking Engine...</div>}>
+    <Suspense fallback={<div className="p-12 text-center text-xs text-[#7c8d82]">Loading Booking Engine...</div>}>
       <BookingContent />
     </Suspense>
   );

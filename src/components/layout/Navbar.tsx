@@ -9,12 +9,9 @@ import {
   MapPin,
   ChevronDown,
   Globe,
-  Search,
   Menu,
   X,
   ShieldCheck,
-  Zap,
-  Sparkles,
   PhoneCall,
   Navigation,
   HardHat,
@@ -22,7 +19,8 @@ import {
   Flame,
   Heart,
   Scale,
-  Award
+  Award,
+  ArrowRight
 } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
@@ -43,27 +41,27 @@ export default function Navbar() {
   ];
 
   return (
-    <header className="sticky top-[37px] z-40 w-full glass-nav border-b border-[#133e2b]/10 dark:border-white/10 transition-all">
+    <header className="sticky top-[37px] z-40 w-full glass-header border-b border-[#e2ded4] dark:border-[#233b2e] transition-all">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16">
-          {/* Logo Section */}
+        <div className="flex items-center justify-between h-20">
+          {/* Logo & Emblem Section */}
           <div className="flex items-center gap-6">
-            <Link href="/" className="flex items-center gap-3 group">
-              <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-[#133e2b] to-[#2d7a52] flex items-center justify-center text-white font-bold text-xl shadow-md group-hover:scale-105 transition-transform">
-                <span className="font-serif">स</span>
+            <Link href="/" className="flex items-center gap-3.5 group">
+              <div className="w-11 h-11 rounded-xl bg-[#193927] border border-[#2d6243] flex items-center justify-center text-[#f9f7f2] font-serif font-bold text-2xl shadow-sm group-hover:bg-[#224c34] transition-colors">
+                <span>स</span>
               </div>
               <div className="flex flex-col">
-                <div className="flex items-center gap-1.5">
-                  <span className="text-xl font-bold text-[#133e2b] dark:text-emerald-400 tracking-tight font-serif">
+                <div className="flex items-center gap-2">
+                  <span className="text-2xl font-extrabold text-[#14221b] dark:text-[#edebe4] tracking-tight font-serif">
                     SahakarSeva
                   </span>
-                  <span className="text-[10px] bg-[#133e2b]/10 dark:bg-emerald-900/40 text-[#133e2b] dark:text-emerald-300 px-1.5 py-0.5 rounded font-semibold uppercase">
-                    Coop
+                  <span className="text-[10px] bg-[#f0f5f2] dark:bg-[#193225] text-[#224c34] dark:text-[#8caea0] border border-[#dce8e1] dark:border-[#234230] px-2 py-0.5 rounded-full font-semibold uppercase tracking-wider">
+                    Cooperative
                   </span>
                 </div>
-                <span className="text-[10px] text-muted-foreground font-medium flex items-center gap-1">
-                  <ShieldCheck className="w-3 h-3 text-[#2d7a52]" />
-                  NCCT & Ministry Verified
+                <span className="text-[11px] text-[#506155] dark:text-[#8caea0] font-medium flex items-center gap-1.5">
+                  <ShieldCheck className="w-3.5 h-3.5 text-[#2d6243]" />
+                  NCCT Verified • Ministry of Cooperation
                 </span>
               </div>
             </Link>
@@ -72,23 +70,23 @@ export default function Navbar() {
             <div className="relative hidden md:block">
               <button
                 onClick={() => setIsLocalityOpen(!isLocalityOpen)}
-                className="flex items-center gap-2 px-3 py-1.5 text-xs font-medium bg-[#f4efe8] dark:bg-emerald-950/60 hover:bg-[#e8f4ed] dark:hover:bg-emerald-900/40 text-[#133e2b] dark:text-emerald-300 rounded-lg transition border border-[#133e2b]/15"
+                className="flex items-center gap-2 px-3.5 py-1.5 text-xs font-semibold bg-[#f4f0e8] dark:bg-[#182c22] hover:bg-[#e8f0ea] dark:hover:bg-[#223d2f] text-[#193927] dark:text-[#dce8e1] rounded-lg transition border border-[#d8d3c7] dark:border-[#2a4a38]"
               >
-                <MapPin className="w-3.5 h-3.5 text-[#c85a32]" />
-                <span className="max-w-[130px] truncate">{selectedLocality}</span>
-                <ChevronDown className="w-3 h-3 text-muted-foreground" />
+                <MapPin className="w-3.5 h-3.5 text-[#a84422]" />
+                <span className="max-w-[140px] truncate">{selectedLocality}</span>
+                <ChevronDown className="w-3.5 h-3.5 text-[#7c8d82]" />
               </button>
 
               <AnimatePresence>
                 {isLocalityOpen && (
                   <motion.div
-                    initial={{ opacity: 0, y: 5 }}
+                    initial={{ opacity: 0, y: 6 }}
                     animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: 5 }}
-                    className="absolute left-0 mt-2 w-64 bg-white dark:bg-[#15241d] rounded-xl shadow-xl border border-[#133e2b]/10 py-2 z-50"
+                    exit={{ opacity: 0, y: 6 }}
+                    className="absolute left-0 mt-2 w-64 bg-[#ffffff] dark:bg-[#13221b] rounded-2xl shadow-elevated border border-[#e2ded4] dark:border-[#233b2e] py-2 z-50"
                   >
-                    <div className="px-3 py-1 text-[11px] font-semibold text-muted-foreground uppercase tracking-wider">
-                      Select Service Location
+                    <div className="px-3.5 py-1.5 text-[10px] font-bold text-[#7c8d82] uppercase tracking-wider">
+                      Select Service Locality
                     </div>
                     {LOCALITIES.map((loc) => (
                       <button
@@ -97,12 +95,14 @@ export default function Navbar() {
                           setSelectedLocality(loc);
                           setIsLocalityOpen(false);
                         }}
-                        className={`w-full text-left px-3 py-2 text-xs flex items-center justify-between hover:bg-[#e8f4ed] dark:hover:bg-emerald-900/30 transition ${
-                          selectedLocality === loc ? "font-bold text-[#133e2b] dark:text-emerald-400 bg-[#e8f4ed]/50" : "text-gray-700 dark:text-gray-300"
+                        className={`w-full text-left px-3.5 py-2 text-xs flex items-center justify-between transition ${
+                          selectedLocality === loc
+                            ? "font-bold text-[#193927] dark:text-[#dce8e1] bg-[#f0f5f2] dark:bg-[#193225]"
+                            : "text-[#4a5b51] dark:text-[#a3b8ac] hover:bg-[#f4f0e8] dark:hover:bg-[#1c3025]"
                         }`}
                       >
                         <span>{loc}</span>
-                        {selectedLocality === loc && <span className="w-1.5 h-1.5 rounded-full bg-[#2d7a52]" />}
+                        {selectedLocality === loc && <span className="w-1.5 h-1.5 rounded-full bg-[#2d6243]" />}
                       </button>
                     ))}
                   </motion.div>
@@ -111,83 +111,85 @@ export default function Navbar() {
             </div>
           </div>
 
-          {/* Center / Right Desktop Navigation */}
-          <nav className="hidden lg:flex items-center gap-6 text-sm font-medium">
-            {/* Common Public / Customer Links */}
+          {/* Center Navigation Links */}
+          <nav className="hidden lg:flex items-center gap-7 text-sm font-medium">
+            {/* Services Dropdown */}
             <div className="relative">
               <button
                 onClick={() => setIsCategoryOpen(!isCategoryOpen)}
-                className="flex items-center gap-1 text-[#133e2b] dark:text-emerald-200 hover:text-[#2d7a52] transition"
+                className="flex items-center gap-1.5 text-[#14221b] dark:text-[#edebe4] hover:text-[#224c34] transition py-1"
               >
-                <span>Services</span>
-                <ChevronDown className="w-3.5 h-3.5" />
+                <span>Service Guilds</span>
+                <ChevronDown className="w-3.5 h-3.5 text-[#7c8d82]" />
               </button>
 
               <AnimatePresence>
                 {isCategoryOpen && (
                   <motion.div
-                    initial={{ opacity: 0, y: 5 }}
+                    initial={{ opacity: 0, y: 6 }}
                     animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: 5 }}
-                    className="absolute left-0 mt-2 w-72 bg-white dark:bg-[#15241d] rounded-xl shadow-xl border border-[#133e2b]/10 py-2 z-50 grid grid-cols-1 gap-0.5"
+                    exit={{ opacity: 0, y: 6 }}
+                    className="absolute left-0 mt-2 w-80 bg-[#ffffff] dark:bg-[#13221b] rounded-2xl shadow-elevated border border-[#e2ded4] dark:border-[#233b2e] p-3 z-50 space-y-1"
                   >
-                    <div className="px-3 py-1 text-[11px] font-semibold text-muted-foreground uppercase tracking-wider border-b border-gray-100 dark:border-gray-800 pb-1">
-                      Cooperative Service Guilds
+                    <div className="px-3 py-1 text-[10px] font-bold text-[#7c8d82] uppercase tracking-wider border-b border-[#ede9e1] dark:border-[#233b2e] pb-1.5">
+                      Cooperative Worker Guilds
                     </div>
                     <Link
                       href="/services"
                       onClick={() => setIsCategoryOpen(false)}
-                      className="px-3 py-2 text-xs text-[#2d7a52] font-semibold hover:bg-[#e8f4ed] flex items-center justify-between"
+                      className="px-3 py-2 text-xs text-[#224c34] dark:text-[#8caea0] font-bold hover:bg-[#f0f5f2] dark:hover:bg-[#193225] rounded-lg flex items-center justify-between transition"
                     >
-                      <span>Explore All Services</span>
-                      <Sparkles className="w-3.5 h-3.5 text-[#c85a32]" />
+                      <span>Browse All 10 Service Guilds</span>
+                      <ArrowRight className="w-3.5 h-3.5 text-[#a84422]" />
                     </Link>
-                    {SERVICE_CATEGORIES.map((cat) => (
-                      <Link
-                        key={cat.id}
-                        href={`/services?category=${cat.id}`}
-                        onClick={() => setIsCategoryOpen(false)}
-                        className="px-3 py-1.5 text-xs text-gray-700 dark:text-gray-300 hover:bg-[#e8f4ed] dark:hover:bg-emerald-900/30 hover:text-[#133e2b] flex items-center justify-between transition"
-                      >
-                        <span>{cat.name}</span>
-                        <span className="text-[10px] text-muted-foreground">₹{cat.startingPrice}+</span>
-                      </Link>
-                    ))}
+                    <div className="max-h-72 overflow-y-auto space-y-0.5 pt-1">
+                      {SERVICE_CATEGORIES.map((cat) => (
+                        <Link
+                          key={cat.id}
+                          href={`/services?category=${cat.id}`}
+                          onClick={() => setIsCategoryOpen(false)}
+                          className="px-3 py-1.5 text-xs text-[#4a5b51] dark:text-[#a3b8ac] hover:bg-[#f4f0e8] dark:hover:bg-[#1c3025] hover:text-[#14221b] rounded-lg flex items-center justify-between transition"
+                        >
+                          <span>{cat.name}</span>
+                          <span className="text-[11px] font-semibold text-[#7c8d82]">From ₹{cat.startingPrice}</span>
+                        </Link>
+                      ))}
+                    </div>
                   </motion.div>
                 )}
               </AnimatePresence>
             </div>
 
-            {/* Role Specific Shortcuts */}
+            {/* Role-Sensitive Navigation Items */}
             {role === "customer" && (
               <>
                 <Link
                   href="/services"
-                  className={`hover:text-[#2d7a52] transition ${pathname === "/services" ? "text-[#2d7a52] font-bold" : "text-gray-700 dark:text-gray-300"}`}
+                  className={`py-1 transition ${pathname === "/services" ? "text-[#193927] font-bold border-b-2 border-[#193927]" : "text-[#4a5b51] dark:text-[#a3b8ac] hover:text-[#193927]"}`}
                 >
-                  Find Workers
+                  Verified Workers
                 </Link>
                 {activeBooking && (
                   <Link
                     href="/tracking"
-                    className="flex items-center gap-1.5 text-[#c85a32] font-semibold bg-[#fceee9] dark:bg-amber-950/40 px-2.5 py-1 rounded-full text-xs animate-pulse"
+                    className="flex items-center gap-1.5 text-[#a84422] font-bold bg-[#f6e8e2] dark:bg-[#331d16] border border-[#e8cebe] dark:border-[#522c20] px-3 py-1 rounded-full text-xs"
                   >
                     <Navigation className="w-3.5 h-3.5" />
-                    <span>Live Tracking</span>
+                    <span>Worker En Route</span>
                   </Link>
                 )}
                 <Link
                   href="/heritage"
-                  className="flex items-center gap-1 text-amber-800 dark:text-amber-300 hover:text-amber-900"
+                  className={`flex items-center gap-1.5 py-1 transition ${pathname === "/heritage" ? "text-[#193927] font-bold border-b-2 border-[#193927]" : "text-[#4a5b51] dark:text-[#a3b8ac] hover:text-[#193927]"}`}
                 >
-                  <Award className="w-3.5 h-3.5 text-amber-600" />
-                  <span>Heritage Artisans</span>
+                  <Award className="w-4 h-4 text-[#855b16]" />
+                  <span>Heritage Crafts</span>
                 </Link>
                 <Link
                   href="/customer"
-                  className={`hover:text-[#2d7a52] transition ${pathname === "/customer" ? "text-[#2d7a52] font-bold" : "text-gray-700 dark:text-gray-300"}`}
+                  className={`py-1 transition ${pathname === "/customer" ? "text-[#193927] font-bold border-b-2 border-[#193927]" : "text-[#4a5b51] dark:text-[#a3b8ac] hover:text-[#193927]"}`}
                 >
-                  My Dashboard
+                  My Bookings
                 </Link>
               </>
             )}
@@ -196,30 +198,30 @@ export default function Navbar() {
               <>
                 <Link
                   href="/worker"
-                  className={`flex items-center gap-1 hover:text-[#2d7a52] transition ${pathname === "/worker" ? "text-[#2d7a52] font-bold" : "text-gray-700 dark:text-gray-300"}`}
+                  className={`flex items-center gap-1.5 py-1 transition ${pathname === "/worker" ? "text-[#193927] font-bold border-b-2 border-[#193927]" : "text-[#4a5b51] dark:text-[#a3b8ac] hover:text-[#193927]"}`}
                 >
-                  <HardHat className="w-3.5 h-3.5" />
+                  <HardHat className="w-4 h-4" />
                   <span>Worker Hub</span>
                 </Link>
                 <Link
                   href="/worker/collective-bargaining"
-                  className={`flex items-center gap-1 hover:text-[#2d7a52] transition ${pathname === "/worker/collective-bargaining" ? "text-[#2d7a52] font-bold" : "text-gray-700 dark:text-gray-300"}`}
+                  className={`flex items-center gap-1.5 py-1 transition ${pathname === "/worker/collective-bargaining" ? "text-[#193927] font-bold border-b-2 border-[#193927]" : "text-[#4a5b51] dark:text-[#a3b8ac] hover:text-[#193927]"}`}
                 >
-                  <BarChart3 className="w-3.5 h-3.5" />
+                  <BarChart3 className="w-4 h-4" />
                   <span>Rate Bargaining</span>
                 </Link>
                 <Link
                   href="/worker/safety"
-                  className={`flex items-center gap-1 hover:text-[#2d7a52] transition ${pathname === "/worker/safety" ? "text-[#2d7a52] font-bold" : "text-gray-700 dark:text-gray-300"}`}
+                  className={`flex items-center gap-1.5 py-1 transition ${pathname === "/worker/safety" ? "text-[#193927] font-bold border-b-2 border-[#193927]" : "text-[#4a5b51] dark:text-[#a3b8ac] hover:text-[#193927]"}`}
                 >
-                  <Heart className="w-3.5 h-3.5 text-rose-500" />
+                  <Heart className="w-4 h-4 text-[#9e3232]" />
                   <span>Women Safety</span>
                 </Link>
                 <Link
                   href="/worker/appeal"
-                  className={`flex items-center gap-1 hover:text-[#2d7a52] transition ${pathname === "/worker/appeal" ? "text-[#2d7a52] font-bold" : "text-gray-700 dark:text-gray-300"}`}
+                  className={`flex items-center gap-1.5 py-1 transition ${pathname === "/worker/appeal" ? "text-[#193927] font-bold border-b-2 border-[#193927]" : "text-[#4a5b51] dark:text-[#a3b8ac] hover:text-[#193927]"}`}
                 >
-                  <Scale className="w-3.5 h-3.5" />
+                  <Scale className="w-4 h-4" />
                   <span>Appeals</span>
                 </Link>
               </>
@@ -229,38 +231,38 @@ export default function Navbar() {
               <>
                 <Link
                   href="/admin"
-                  className={`flex items-center gap-1 hover:text-[#2d7a52] transition ${pathname === "/admin" ? "text-[#2d7a52] font-bold" : "text-gray-700 dark:text-gray-300"}`}
+                  className={`flex items-center gap-1.5 py-1 transition ${pathname === "/admin" ? "text-[#193927] font-bold border-b-2 border-[#193927]" : "text-[#4a5b51] dark:text-[#a3b8ac] hover:text-[#193927]"}`}
                 >
-                  <ShieldCheck className="w-3.5 h-3.5" />
-                  <span>Admin Overview</span>
+                  <ShieldCheck className="w-4 h-4" />
+                  <span>Admin Portal</span>
                 </Link>
                 <Link
                   href="/admin/forecasting"
-                  className={`flex items-center gap-1 hover:text-[#2d7a52] transition ${pathname === "/admin/forecasting" ? "text-[#2d7a52] font-bold" : "text-gray-700 dark:text-gray-300"}`}
+                  className={`flex items-center gap-1.5 py-1 transition ${pathname === "/admin/forecasting" ? "text-[#193927] font-bold border-b-2 border-[#193927]" : "text-[#4a5b51] dark:text-[#a3b8ac] hover:text-[#193927]"}`}
                 >
-                  <Zap className="w-3.5 h-3.5" />
-                  <span>AI Demand Forecast</span>
+                  <BarChart3 className="w-4 h-4" />
+                  <span>Demand Forecast</span>
                 </Link>
                 <Link
                   href="/admin/redistribution"
-                  className={`flex items-center gap-1 hover:text-[#2d7a52] transition ${pathname === "/admin/redistribution" ? "text-[#2d7a52] font-bold" : "text-gray-700 dark:text-gray-300"}`}
+                  className={`flex items-center gap-1.5 py-1 transition ${pathname === "/admin/redistribution" ? "text-[#193927] font-bold border-b-2 border-[#193927]" : "text-[#4a5b51] dark:text-[#a3b8ac] hover:text-[#193927]"}`}
                 >
-                  <Flame className="w-3.5 h-3.5 text-amber-500" />
+                  <Flame className="w-4 h-4 text-[#855b16]" />
                   <span>Crisis Redistribution</span>
                 </Link>
                 <Link
                   href="/admin/batch-pooling"
-                  className={`flex items-center gap-1 hover:text-[#2d7a52] transition ${pathname === "/admin/batch-pooling" ? "text-[#2d7a52] font-bold" : "text-gray-700 dark:text-gray-300"}`}
+                  className={`flex items-center gap-1.5 py-1 transition ${pathname === "/admin/batch-pooling" ? "text-[#193927] font-bold border-b-2 border-[#193927]" : "text-[#4a5b51] dark:text-[#a3b8ac] hover:text-[#193927]"}`}
                 >
-                  <Navigation className="w-3.5 h-3.5" />
-                  <span>Batch Route Map</span>
+                  <Navigation className="w-4 h-4" />
+                  <span>Batch Route Pooling</span>
                 </Link>
               </>
             )}
 
             <Link
               href="/about"
-              className={`hover:text-[#2d7a52] transition ${pathname === "/about" ? "text-[#2d7a52] font-bold" : "text-gray-700 dark:text-gray-300"}`}
+              className={`py-1 transition ${pathname === "/about" ? "text-[#193927] font-bold border-b-2 border-[#193927]" : "text-[#4a5b51] dark:text-[#a3b8ac] hover:text-[#193927]"}`}
             >
               Wage Philosophy
             </Link>
@@ -272,20 +274,20 @@ export default function Navbar() {
             <div className="relative">
               <button
                 onClick={() => setIsLangOpen(!isLangOpen)}
-                className="p-2 text-gray-600 dark:text-gray-300 hover:text-[#133e2b] hover:bg-black/5 rounded-lg transition flex items-center gap-1 text-xs font-semibold"
+                className="p-2 text-[#4a5b51] dark:text-[#a3b8ac] hover:text-[#14221b] hover:bg-[#f4f0e8] dark:hover:bg-[#1c3025] rounded-lg transition flex items-center gap-1.5 text-xs font-semibold"
                 title="Change Language"
               >
-                <Globe className="w-4 h-4 text-[#2d7a52]" />
+                <Globe className="w-4 h-4 text-[#2d6243]" />
                 <span className="uppercase">{language}</span>
               </button>
 
               <AnimatePresence>
                 {isLangOpen && (
                   <motion.div
-                    initial={{ opacity: 0, y: 5 }}
+                    initial={{ opacity: 0, y: 6 }}
                     animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: 5 }}
-                    className="absolute right-0 mt-2 w-44 bg-white dark:bg-[#15241d] rounded-xl shadow-xl border border-[#133e2b]/10 py-1.5 z-50"
+                    exit={{ opacity: 0, y: 6 }}
+                    className="absolute right-0 mt-2 w-44 bg-[#ffffff] dark:bg-[#13221b] rounded-xl shadow-elevated border border-[#e2ded4] dark:border-[#233b2e] py-1.5 z-50"
                   >
                     {languages.map((lang) => (
                       <button
@@ -294,8 +296,10 @@ export default function Navbar() {
                           setLanguage(lang.code as any);
                           setIsLangOpen(false);
                         }}
-                        className={`w-full text-left px-3 py-1.5 text-xs flex items-center justify-between hover:bg-[#e8f4ed] dark:hover:bg-emerald-900/30 transition ${
-                          language === lang.code ? "font-bold text-[#133e2b] dark:text-emerald-400 bg-[#e8f4ed]/50" : "text-gray-700 dark:text-gray-300"
+                        className={`w-full text-left px-3.5 py-1.5 text-xs flex items-center justify-between transition ${
+                          language === lang.code
+                            ? "font-bold text-[#193927] dark:text-[#dce8e1] bg-[#f0f5f2] dark:bg-[#193225]"
+                            : "text-[#4a5b51] dark:text-[#a3b8ac] hover:bg-[#f4f0e8]"
                         }`}
                       >
                         <span>{lang.name}</span>
@@ -306,13 +310,13 @@ export default function Navbar() {
               </AnimatePresence>
             </div>
 
-            {/* Emergency SOS Button */}
+            {/* Emergency SOS Urgent Request Button */}
             <Link
               href="/emergency"
-              className="flex items-center gap-1.5 bg-[#c85a32] hover:bg-[#b24a24] text-white px-3 py-1.5 rounded-lg text-xs font-bold shadow-sm transition hover:scale-105 active:scale-95"
+              className="flex items-center gap-2 bg-[#a84422] hover:bg-[#8c381c] text-[#ffffff] px-4 py-2 rounded-xl text-xs font-bold transition shadow-sm"
             >
               <PhoneCall className="w-3.5 h-3.5" />
-              <span>SOS Urgent</span>
+              <span>Urgent Service</span>
             </Link>
           </div>
 
@@ -320,14 +324,14 @@ export default function Navbar() {
           <div className="flex lg:hidden items-center gap-2">
             <Link
               href="/emergency"
-              className="bg-[#c85a32] text-white p-2 rounded-lg text-xs font-bold"
+              className="bg-[#a84422] text-[#ffffff] p-2 rounded-xl text-xs font-bold"
             >
               <PhoneCall className="w-4 h-4" />
             </Link>
 
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="p-2 text-gray-700 dark:text-gray-200 hover:bg-black/5 rounded-lg"
+              className="p-2 text-[#14221b] dark:text-[#edebe4] hover:bg-[#f4f0e8] rounded-xl"
             >
               {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
             </button>
@@ -342,69 +346,69 @@ export default function Navbar() {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
-            className="lg:hidden bg-white dark:bg-[#15241d] border-b border-[#133e2b]/10 px-4 py-4 space-y-3"
+            className="lg:hidden bg-[#ffffff] dark:bg-[#13221b] border-b border-[#e2ded4] px-5 py-5 space-y-4"
           >
-            <div className="flex items-center justify-between pb-3 border-b border-gray-100 dark:border-gray-800">
-              <span className="text-xs font-semibold uppercase text-muted-foreground">Location</span>
+            <div className="flex items-center justify-between pb-3 border-b border-[#ede9e1]">
+              <span className="text-xs font-semibold uppercase text-[#7c8d82]">Active Locality</span>
               <button
                 onClick={() => setIsLocalityOpen(!isLocalityOpen)}
-                className="text-xs font-bold text-[#133e2b] dark:text-emerald-400 flex items-center gap-1"
+                className="text-xs font-bold text-[#193927] dark:text-[#dce8e1] flex items-center gap-1.5"
               >
-                <MapPin className="w-3.5 h-3.5 text-[#c85a32]" />
+                <MapPin className="w-3.5 h-3.5 text-[#a84422]" />
                 {selectedLocality}
               </button>
             </div>
 
-            <div className="grid grid-cols-2 gap-2 pt-2">
+            <div className="grid grid-cols-2 gap-2 pt-1">
               <Link
                 href="/services"
                 onClick={() => setMobileMenuOpen(false)}
-                className="p-3 bg-[#f4efe8] dark:bg-emerald-950/40 rounded-xl text-xs font-bold text-[#133e2b] dark:text-emerald-300 text-center"
+                className="p-3 bg-[#f4f0e8] dark:bg-[#182c22] rounded-xl text-xs font-bold text-[#193927] dark:text-[#dce8e1] text-center"
               >
                 Explore Services
               </Link>
               <Link
                 href="/booking"
                 onClick={() => setMobileMenuOpen(false)}
-                className="p-3 bg-[#133e2b] text-white rounded-xl text-xs font-bold text-center"
+                className="p-3 bg-[#193927] text-white rounded-xl text-xs font-bold text-center"
               >
                 Book Worker
               </Link>
               <Link
                 href="/tracking"
                 onClick={() => setMobileMenuOpen(false)}
-                className="p-3 bg-[#fceee9] text-[#c85a32] rounded-xl text-xs font-bold text-center"
+                className="p-3 bg-[#f6e8e2] text-[#a84422] rounded-xl text-xs font-bold text-center"
               >
                 Live Tracking
               </Link>
               <Link
                 href="/heritage"
                 onClick={() => setMobileMenuOpen(false)}
-                className="p-3 bg-amber-50 text-amber-900 rounded-xl text-xs font-bold text-center"
+                className="p-3 bg-[#f9f2e4] text-[#855b16] rounded-xl text-xs font-bold text-center"
               >
-                Heritage Marketplace
+                Heritage Guild
               </Link>
             </div>
 
-            <div className="pt-3 space-y-1 text-sm">
+            <div className="pt-2 space-y-1 text-sm">
               <Link
                 href="/worker"
                 onClick={() => setMobileMenuOpen(false)}
-                className="block px-3 py-2 rounded-lg font-medium hover:bg-gray-100 dark:hover:bg-emerald-900/30"
+                className="block px-3 py-2 rounded-lg font-semibold hover:bg-[#f4f0e8]"
               >
-                Worker Hub & Dashboard
+                Worker Hub & Earnings
               </Link>
               <Link
                 href="/admin"
                 onClick={() => setMobileMenuOpen(false)}
-                className="block px-3 py-2 rounded-lg font-medium hover:bg-gray-100 dark:hover:bg-emerald-900/30"
+                className="block px-3 py-2 rounded-lg font-semibold hover:bg-[#f4f0e8]"
               >
-                Federation Admin Panel
+                Federation Admin Portal
               </Link>
               <Link
                 href="/about"
                 onClick={() => setMobileMenuOpen(false)}
-                className="block px-3 py-2 rounded-lg font-medium hover:bg-gray-100 dark:hover:bg-emerald-900/30"
+                className="block px-3 py-2 rounded-lg font-semibold hover:bg-[#f4f0e8]"
               >
                 Wage Transparency Philosophy
               </Link>

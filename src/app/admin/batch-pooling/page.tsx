@@ -8,34 +8,32 @@ import {
   Navigation,
   Building2,
   Users,
-  CheckCircle2,
   Leaf,
   ChevronRight,
-  ShieldCheck,
-  Zap
+  ShieldCheck
 } from "lucide-react";
 
 export default function BatchPoolingPage() {
   const { showToast } = useApp();
 
   const handleApproveBatch = (neighborhood: string) => {
-    showToast("Batch Dispatch Approved", `RWA optimized route dispatched for ${neighborhood}. CO2 & fuel savings locked!`);
+    showToast("Batch Dispatch Approved", `RWA optimized route dispatched for ${neighborhood}. CO2 & fuel savings locked.`);
   };
 
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-10">
       {/* Header Banner */}
-      <div className="bg-gradient-to-r from-[#133e2b] via-[#1e5338] to-[#2d7a52] text-white p-8 rounded-3xl shadow-2xl space-y-3">
+      <div className="bg-[#193927] text-[#f9f7f2] p-8 rounded-3xl shadow-elevated space-y-3 border border-[#2d6243]">
         <div className="flex items-center gap-2">
-          <span className="bg-emerald-800 text-emerald-100 text-xs font-bold px-3 py-1 rounded-full flex items-center gap-1 border border-emerald-500/30">
+          <span className="bg-[#224c34] text-[#dce8e1] text-[10px] font-bold px-3 py-1 rounded-full flex items-center gap-1.5 uppercase tracking-wider border border-[#35674a]">
             <Building2 className="w-3.5 h-3.5" /> RWA Neighborhood Aggregator
           </span>
-          <span className="text-xs text-emerald-200">Green Logistics & Eco-Route Optimization</span>
+          <span className="text-xs text-[#c5d7cc]">Eco-Route Optimization & Fuel Reduction</span>
         </div>
-        <h1 className="text-3xl sm:text-4xl font-extrabold font-serif text-emerald-100">
+        <h1 className="text-3xl sm:text-4xl font-extrabold font-serif text-[#f9f7f2]">
           Neighborhood Demand Pooling & Batch Optimization
         </h1>
-        <p className="text-xs sm:text-sm text-emerald-200/80 max-w-2xl">
+        <p className="text-xs sm:text-sm text-[#dce8e1] max-w-2xl leading-relaxed">
           Aggregates multiple individual household service requests within the same apartment complex or RWA into 1 optimized batch route for worker teams, reducing transit distance by 45%.
         </p>
       </div>
@@ -46,11 +44,11 @@ export default function BatchPoolingPage() {
         <div className="lg:col-span-7 space-y-6">
           <div className="space-y-3">
             <div className="flex items-center justify-between">
-              <h2 className="text-xl font-bold text-[#133e2b] dark:text-emerald-300 font-serif">
+              <h2 className="text-xl font-bold text-[#14221b] dark:text-[#edebe4] font-serif">
                 Optimized Route Visualization
               </h2>
-              <span className="text-xs text-emerald-700 dark:text-emerald-400 font-bold flex items-center gap-1">
-                <Leaf className="w-4 h-4 text-emerald-600" /> -7.2 kg CO2 Emission Saved
+              <span className="text-xs text-[#224c34] dark:text-[#8caea0] font-bold flex items-center gap-1.5">
+                <Leaf className="w-4 h-4 text-[#2d6243]" /> -7.2 kg CO2 Emission Saved
               </span>
             </div>
             <InteractiveMap mode="batch_route" height="h-[480px]" />
@@ -59,7 +57,7 @@ export default function BatchPoolingPage() {
 
         {/* Batch Items List Column */}
         <div className="lg:col-span-5 space-y-6">
-          <h2 className="text-xl font-bold text-[#133e2b] dark:text-emerald-300 font-serif">
+          <h2 className="text-xl font-bold text-[#14221b] dark:text-[#edebe4] font-serif">
             Active RWA Pooled Batches ({BATCH_POOL_ITEMS.length})
           </h2>
 
@@ -67,42 +65,42 @@ export default function BatchPoolingPage() {
             {BATCH_POOL_ITEMS.map((item) => (
               <div
                 key={item.id}
-                className="bg-white dark:bg-[#15241d] rounded-3xl p-6 border border-[#133e2b]/15 shadow-xl space-y-4"
+                className="bg-[#ffffff] dark:bg-[#13221b] rounded-3xl p-6 sm:p-7 border border-[#e2ded4] dark:border-[#233b2e] shadow-soft space-y-4"
               >
                 <div className="space-y-1">
-                  <span className="text-[10px] font-bold bg-[#e8f4ed] text-[#133e2b] px-2.5 py-0.5 rounded-full">
+                  <span className="text-[10px] font-bold bg-[#f0f5f2] text-[#193927] border border-[#c5d7cc] px-2.5 py-0.5 rounded-full">
                     {item.rwaName}
                   </span>
-                  <h3 className="text-base font-bold text-gray-900 dark:text-gray-100 font-serif mt-1">
+                  <h3 className="text-base font-bold text-[#14221b] dark:text-[#edebe4] font-serif mt-1">
                     {item.serviceType}
                   </h3>
-                  <div className="text-xs text-muted-foreground">{item.neighborhood}</div>
-                  <div className="text-xs font-semibold text-emerald-600">{item.scheduledTime}</div>
+                  <div className="text-xs text-[#7c8d82]">{item.neighborhood}</div>
+                  <div className="text-xs font-semibold text-[#224c34] dark:text-[#8caea0]">{item.scheduledTime}</div>
                 </div>
 
                 {/* Metrics Box */}
-                <div className="grid grid-cols-3 gap-2 p-3 bg-[#f4efe8]/60 dark:bg-emerald-950/40 rounded-2xl text-center text-xs">
+                <div className="grid grid-cols-3 gap-2 p-3.5 bg-[#f9f7f2] dark:bg-[#182c22] rounded-2xl text-center text-xs border border-[#ede9e1] dark:border-[#244230]">
                   <div>
-                    <div className="text-[10px] text-muted-foreground">Households</div>
-                    <div className="font-extrabold text-[#133e2b] dark:text-emerald-300">{item.householdsCount} Homes</div>
+                    <div className="text-[10px] text-[#7c8d82]">Households</div>
+                    <div className="font-extrabold text-[#193927] dark:text-[#edebe4]">{item.householdsCount} Homes</div>
                   </div>
                   <div>
-                    <div className="text-[10px] text-muted-foreground">Travel Saved</div>
-                    <div className="font-extrabold text-emerald-600">{item.originalTravelKm - item.optimizedTravelKm} km</div>
+                    <div className="text-[10px] text-[#7c8d82]">Transit Saved</div>
+                    <div className="font-extrabold text-[#224c34] dark:text-[#8caea0]">{item.originalTravelKm - item.optimizedTravelKm} km</div>
                   </div>
                   <div>
-                    <div className="text-[10px] text-muted-foreground">Discount/Home</div>
-                    <div className="font-extrabold text-amber-600">₹{item.discountPerHome} OFF</div>
+                    <div className="text-[10px] text-[#7c8d82]">RWA Discount</div>
+                    <div className="font-extrabold text-[#855b16]">₹{item.discountPerHome} OFF</div>
                   </div>
                 </div>
 
-                <div className="text-xs text-muted-foreground flex items-center justify-between pt-1">
-                  <span>Assigned Team: {item.assignedWorkerTeam.join(", ")}</span>
+                <div className="text-xs text-[#7c8d82]">
+                  Assigned Team: {item.assignedWorkerTeam.join(", ")}
                 </div>
 
                 <button
                   onClick={() => handleApproveBatch(item.neighborhood)}
-                  className="w-full bg-[#133e2b] hover:bg-[#1e5338] text-white py-2.5 rounded-xl font-extrabold text-xs shadow-md transition flex items-center justify-center gap-2"
+                  className="w-full bg-[#193927] hover:bg-[#224c34] text-white py-3 rounded-xl font-bold text-xs shadow-xs transition flex items-center justify-center gap-2"
                 >
                   <span>Approve & Dispatch Batch Route</span>
                   <ChevronRight className="w-4 h-4" />

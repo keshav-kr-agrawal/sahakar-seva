@@ -14,23 +14,23 @@ export default function TrustBadge({ type, size = "sm" }: TrustBadgeProps) {
   const configs = {
     verified: {
       label: "NCCT Verified",
-      icon: <ShieldCheck className={size === "sm" ? "w-3 h-3" : "w-4 h-4"} />,
-      bg: "bg-emerald-100 dark:bg-emerald-950/80 text-emerald-800 dark:text-emerald-300 border-emerald-300 dark:border-emerald-700",
+      icon: <ShieldCheck className={size === "sm" ? "w-3 h-3" : "w-3.5 h-3.5"} />,
+      bg: "bg-[#f0f5f2] dark:bg-[#152a1e] text-[#224c34] dark:text-[#a3c9b4] border-[#c5d7cc] dark:border-[#2a4e39]",
     },
     women_safe: {
       label: "Women-Safe",
-      icon: <Heart className={size === "sm" ? "w-3 h-3" : "w-4 h-4"} />,
-      bg: "bg-rose-100 dark:bg-rose-950/80 text-rose-800 dark:text-rose-300 border-rose-300 dark:border-rose-700",
+      icon: <Heart className={size === "sm" ? "w-3 h-3" : "w-3.5 h-3.5"} />,
+      bg: "bg-[#f9ecec] dark:bg-[#2b1717] text-[#872828] dark:text-[#e4a8a8] border-[#f0d5d5] dark:border-[#4d2828]",
     },
     heritage: {
       label: "Heritage Craft",
-      icon: <Award className={size === "sm" ? "w-3 h-3" : "w-4 h-4"} />,
-      bg: "bg-amber-100 dark:bg-amber-950/80 text-amber-800 dark:text-amber-300 border-amber-300 dark:border-amber-700",
+      icon: <Award className={size === "sm" ? "w-3 h-3" : "w-3.5 h-3.5"} />,
+      bg: "bg-[#fdf4e8] dark:bg-[#2d2214] text-[#855b16] dark:text-[#dec08a] border-[#eedbc2] dark:border-[#523d24]",
     },
     coop_owned: {
       label: "Coop Equity Partner",
-      icon: <CheckCircle className={size === "sm" ? "w-3 h-3" : "w-4 h-4"} />,
-      bg: "bg-sky-100 dark:bg-sky-950/80 text-sky-800 dark:text-sky-300 border-sky-300 dark:border-sky-700",
+      icon: <CheckCircle className={size === "sm" ? "w-3 h-3" : "w-3.5 h-3.5"} />,
+      bg: "bg-[#edf4f0] dark:bg-[#16271e] text-[#1c402c] dark:text-[#9bc2ac] border-[#cfe0d6] dark:border-[#2a4a37]",
     },
   };
 
@@ -38,12 +38,12 @@ export default function TrustBadge({ type, size = "sm" }: TrustBadgeProps) {
 
   return (
     <span
-      className={`inline-flex items-center gap-1 font-semibold border rounded-full ${config.bg} ${
-        size === "sm" ? "px-2 py-0.5 text-[10px]" : "px-2.5 py-1 text-xs"
+      className={`inline-flex items-center gap-1.5 font-semibold border rounded-full ${config.bg} ${
+        size === "sm" ? "px-2.5 py-0.5 text-[10px]" : "px-3 py-1 text-xs"
       }`}
     >
       {config.icon}
-      <span>{config.label}</span>
+      <span className="tracking-tight">{config.label}</span>
     </span>
   );
 }
