@@ -106,7 +106,7 @@ export default function WageLedgerCard({
         {items.map((item, index) => (
           <motion.div
             key={item.title}
-            initial={animated ? { opacity: 0, y: 6 } : false}
+            initial={false}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: index * 0.08 }}
             className="flex items-center justify-between p-3.5 rounded-2xl bg-[#f9f7f2] dark:bg-[#182c22] border border-[#ede9e1] dark:border-[#244230] hover:border-[#d8d3c7] transition"

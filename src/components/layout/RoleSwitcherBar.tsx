@@ -33,7 +33,7 @@ export default function RoleSwitcherBar() {
   ];
 
   return (
-    <aside aria-label="Demo Role Selector" className="w-full bg-[#11261a] text-[#edebe4] border-b border-[#234230] px-4 py-2 text-xs z-50 sticky top-0">
+    <aside aria-label="Demo Role Selector" className="relative w-full bg-[#11261a] text-[#edebe4] border-b border-[#234230] px-4 py-2 text-xs">
       <div className="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-3">
         {/* Left: Judge Demo Badge */}
         <div className="flex items-center gap-2.5">

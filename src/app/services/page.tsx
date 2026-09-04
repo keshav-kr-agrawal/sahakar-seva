@@ -195,10 +195,8 @@ function ServicesContent() {
             </div>
           ) : (
             filteredWorkers.map((w) => (
-              <motion.div
+              <div
                 key={w.id}
-                initial={{ opacity: 0, y: 12 }}
-                animate={{ opacity: 1, y: 0 }}
                 className="bg-[#ffffff] dark:bg-[#13221b] rounded-3xl border border-[#e2ded4] dark:border-[#233b2e] shadow-soft p-6 flex flex-col justify-between space-y-4 hover:border-[#193927] transition"
               >
                 <div className="space-y-3.5">
@@ -285,7 +283,7 @@ function ServicesContent() {
                     </Link>
                   </div>
                 </div>
-              </motion.div>
+              </div>
             ))
           )}
         </div>

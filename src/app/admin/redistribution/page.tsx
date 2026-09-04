@@ -104,7 +104,7 @@ export default function CrisisRedistributionPage() {
               <motion.div
                 key={w.id}
                 layout
-                initial={{ opacity: 0, y: 8 }}
+                initial={false}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -8 }}
                 transition={{ type: "spring", stiffness: 350, damping: 25 }}

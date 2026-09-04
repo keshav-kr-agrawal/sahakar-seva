@@ -41,7 +41,7 @@ export default function Navbar() {
   ];
 
   return (
-    <header className="sticky top-[37px] z-40 w-full glass-header border-b border-[#e2ded4] dark:border-[#233b2e] transition-all">
+    <nav aria-label="Main Navigation" className="w-full glass-header border-b border-[#e2ded4] dark:border-[#233b2e] transition-all">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-20">
           {/* Logo & Emblem Section */}
@@ -416,6 +416,6 @@ export default function Navbar() {
           </motion.div>
         )}
       </AnimatePresence>
-    </header>
+    </nav>
   );
 }

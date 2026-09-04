@@ -25,14 +25,28 @@ export default function RootLayout({
           href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..800;1,9..144,400..800&family=Plus+Jakarta+Sans:ital,wght@0,300..800;1,300..800&display=swap"
           rel="stylesheet"
         />
+        {/* Auto-unregister any stale service worker from other localhost projects */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              if (typeof window !== 'undefined' && 'serviceWorker' in navigator) {
+                navigator.serviceWorker.getRegistrations().then(function(registrations) {
+                  for (let registration of registrations) {
+                    registration.unregister();
+                  }
+                });
+              }
+            `,
+          }}
+        />
       </head>
       <body className="antialiased min-h-screen flex flex-col justify-between selection:bg-[#224c34] selection:text-[#f9f7f2]">
         <AppProvider>
-          {/* Top Demo Bar for Hackathon Judges */}
-          <RoleSwitcherBar />
-
-          {/* Sticky Navigation Header */}
-          <Navbar />
+          {/* Unified Sticky Header Container */}
+          <div className="sticky top-0 z-40 w-full">
+            <RoleSwitcherBar />
+            <Navbar />
+          </div>
 
           {/* Main Page Content */}
           <main className="flex-1 w-full">{children}</main>
