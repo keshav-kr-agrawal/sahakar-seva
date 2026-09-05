@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { AppProvider } from "@/context/AppContext";
-import RoleSwitcherBar from "@/components/layout/RoleSwitcherBar";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import Toast from "@/components/ui/Toast";
@@ -42,11 +41,8 @@ export default function RootLayout({
       </head>
       <body className="antialiased min-h-screen flex flex-col justify-between selection:bg-[#224c34] selection:text-[#f9f7f2]">
         <AppProvider>
-          {/* Unified Sticky Header Container with solid opaque background */}
-          <div className="sticky top-0 z-50 w-full bg-[#ffffff] dark:bg-[#11261a] shadow-xs">
-            <RoleSwitcherBar />
-            <Navbar />
-          </div>
+          {/* 21st.dev Style Floating Clean Header */}
+          <Navbar />
 
           {/* Main Page Content */}
           <main className="flex-1 w-full">{children}</main>
