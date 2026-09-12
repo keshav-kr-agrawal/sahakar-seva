@@ -172,16 +172,16 @@ export default function Navbar() {
           {/* Left: Brand & Cooperative Badge */}
           <div className="flex items-center gap-2 sm:gap-3 shrink-0">
             <Link href="/" className="flex items-center gap-2 group">
-              <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-xl bg-slate-900 text-emerald-400 flex items-center justify-center font-black shadow-xs group-hover:scale-105 transition-transform shrink-0">
-                <Zap className="w-4 h-4 text-emerald-400 fill-emerald-400" />
+              <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-xl bg-slate-900 text-white flex items-center justify-center font-black shadow-xs group-hover:scale-105 transition-transform shrink-0">
+                <Zap className="w-4 h-4 text-white fill-white" />
               </div>
               <div className="flex flex-col">
                 <div className="flex items-center gap-1.5">
                   <span className="text-lg sm:text-xl font-extrabold text-slate-900 tracking-tight font-sans">
-                    Sahakar<span className="text-emerald-600">Seva</span>
+                    Sahakar<span className="text-slate-900">Seva</span>
                   </span>
-                  <span className="hidden xl:inline-flex items-center gap-1 bg-emerald-50 text-emerald-700 border border-emerald-200 px-2 py-0.5 rounded-full text-[10px] font-bold">
-                    100% Co-op
+                  <span className="hidden xl:inline-flex items-center gap-1 bg-slate-100 text-slate-700 border border-slate-200 px-2 py-0.5 rounded-full text-[10px] font-bold">
+                    Co-op
                   </span>
                 </div>
               </div>
@@ -415,12 +415,7 @@ export default function Navbar() {
                       layoutId="tubelight-active"
                       className="absolute inset-0 bg-white rounded-full shadow-xs -z-0"
                       transition={{ type: "spring", stiffness: 350, damping: 30 }}
-                    >
-                      {/* 21st.dev Tubelight Lamp & Beam Reflection */}
-                      <div className="absolute -top-1.5 left-1/2 -translate-x-1/2 w-8 h-[2.5px] bg-emerald-500 rounded-full blur-[0.5px]">
-                        <div className="absolute w-12 h-4 bg-emerald-500/25 rounded-full blur-md -top-1.5 -left-2" />
-                      </div>
-                    </motion.div>
+                    />
                   )}
                 </Link>
               );
@@ -443,7 +438,7 @@ export default function Navbar() {
           {/* Right: Actions, Notifications & Role Switcher */}
           <div className="flex items-center gap-1.5 sm:gap-2.5 shrink-0">
             
-            {/* 21st.dev Live Co-op Activity Notifications Hub */}
+            {/* Live Co-op Activity Notifications Hub */}
             <div className="relative" ref={notificationRef}>
               <button
                 onClick={() => setIsNotificationsOpen(!isNotificationsOpen)}
@@ -452,11 +447,8 @@ export default function Navbar() {
                 aria-label="Cooperative Live Notifications"
               >
                 <Bell className="w-4 h-4" />
-                {/* 21st.dev Pulse Ping Indicator */}
-                <span className="absolute top-1 right-1 flex h-2 w-2">
-                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-                  <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
-                </span>
+                {/* Subtle Clean Notification Dot */}
+                <span className="absolute top-1.5 right-1.5 w-1.5 h-1.5 rounded-full bg-slate-900"></span>
               </button>
 
               {/* Notification Popover */}

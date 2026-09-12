@@ -11,47 +11,38 @@
 
 @layer base {
   :root {
-    /* Modern Urban Gig Platform Palette (Urban Company / Pronto aesthetic) */
-    --background: #f8fafc;
+    /* Pronto-Grade Minimalist Palette (Zero Neon, Clean Whitespace, Deep Slate & Forest) */
+    --background: #ffffff;
     --foreground: #0f172a;
     
     --card: #ffffff;
     --card-foreground: #0f172a;
-    --card-subtle: #f1f5f9;
+    --card-subtle: #f8fafc;
     
-    /* Sleek Obsidian & Deep Tech Slate */
+    /* Obsidian & Sleek Neutrals */
     --slate-950: #020617;
     --slate-900: #0f172a;
     --slate-800: #1e293b;
     --slate-700: #334155;
     --slate-600: #475569;
     --slate-500: #64748b;
+    --slate-400: #94a3b8;
+    --slate-300: #cbd5e1;
     --slate-200: #e2e8f0;
     --slate-100: #f1f5f9;
     --slate-50: #f8fafc;
 
-    /* Primary: Tech Navy Obsidian */
+    /* Primary Brand Action: Solid Obsidian */
     --primary: #0f172a;
     --primary-hover: #1e293b;
     --primary-foreground: #ffffff;
     
-    /* Vibrant Tech Emerald (Gig Earnings & Growth - NOT agriculture) */
-    --emerald-600: #059669;
-    --emerald-500: #10b981;
-    --emerald-100: #d1fae5;
-    --emerald-50: #ecfdf5;
-
-    /* Vibrant Electric Indigo (Urban Company / Fintech trust) */
-    --indigo-600: #4f46e5;
-    --indigo-500: #6366f1;
-    --indigo-100: #e0e7ff;
-    --indigo-50: #eef2ff;
-
-    /* Urgent Coral / Sunset (Immediate dispatch, SOS) */
-    --coral-600: #ea580c;
-    --coral-500: #f97316;
-    --coral-100: #ffedd5;
-    --coral-50: #fff7ed;
+    /* Subtle Botanical Forest Green (Verified trust marks - never neon) */
+    --emerald-700: #15803d;
+    --emerald-600: #166534;
+    --emerald-500: #15803d;
+    --emerald-100: #dcfce7;
+    --emerald-50: #f0fdf4;
     
     --border: #e2e8f0;
     --border-subtle: #f1f5f9;
@@ -82,7 +73,7 @@ h1, h2, h3, h4, .font-serif {
   height: 6px;
 }
 ::-webkit-scrollbar-track {
-  background: #f1f5f9;
+  background: #f8fafc;
 }
 ::-webkit-scrollbar-thumb {
   background: #cbd5e1;
@@ -92,15 +83,11 @@ h1, h2, h3, h4, .font-serif {
   background: #94a3b8;
 }
 
-/* Modern Gig Platform Elevation Shadows */
+/* Pronto Soft Elevation Shadows */
 .shadow-soft {
-  box-shadow: 0 1px 3px 0 rgba(15, 23, 42, 0.04), 0 4px 12px 0 rgba(15, 23, 42, 0.03);
+  box-shadow: 0 1px 2px 0 rgba(15, 23, 42, 0.04), 0 2px 8px 0 rgba(15, 23, 42, 0.02);
 }
 
 .shadow-elevated {
-  box-shadow: 0 4px 6px -1px rgba(15, 23, 42, 0.05), 0 12px 28px -4px rgba(15, 23, 42, 0.08);
-}
-
-.shadow-card-hover {
-  box-shadow: 0 10px 25px -5px rgba(15, 23, 42, 0.08), 0 8px 10px -6px rgba(15, 23, 42, 0.04);
+  box-shadow: 0 4px 20px -2px rgba(15, 23, 42, 0.08), 0 2px 6px -1px rgba(15, 23, 42, 0.04);
 }
