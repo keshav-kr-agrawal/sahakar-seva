@@ -98,6 +98,11 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
+                <Link href="/passport" className="hover:text-white transition">
+                  Sovereign Worker Passport
+                </Link>
+              </li>
+              <li>
                 <Link href="/worker/collective-bargaining" className="hover:text-white transition">
                   Democratic Rate Voting
                 </Link>
@@ -113,8 +118,8 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
-                <Link href="/about" className="hover:text-white transition">
-                  ₹10,000/mo MEG Floor
+                <Link href="/welfare" className="hover:text-white transition">
+                  ₹10,000 MEG & Rain Shield
                 </Link>
               </li>
               <li>
@@ -137,6 +142,11 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
+                <Link href="/fairness" className="hover:text-white transition">
+                  Fairness Console (SHAP/XAI)
+                </Link>
+              </li>
+              <li>
                 <Link href="/admin/forecasting" className="hover:text-white transition">
                   GNN Demand Forecasting
                 </Link>
@@ -152,8 +162,8 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
-                <Link href="/about" className="hover:text-white transition">
-                  Explainable AI (SHAP / LIME)
+                <Link href="/open-protocol" className="hover:text-white transition">
+                  ONDC Open Protocol Specs
                 </Link>
               </li>
             </ul>

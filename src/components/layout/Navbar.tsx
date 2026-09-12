@@ -60,10 +60,12 @@ export default function Navbar() {
 
   const navLinks = [
     { label: "All Services", href: "/services" },
-    { label: "⚡ Hourly Instahelp", href: "/#instahelp" },
-    { label: "👥 Crews & Packs", href: "/#crews" },
+    { label: "⚡ Hourly Blocks", href: "/#instahelp" },
+    { label: "👥 Crews", href: "/#crews" },
+    { label: "Fairness (XAI)", href: "/fairness" },
+    { label: "Worker Passport", href: "/passport" },
+    { label: "Welfare & Rain", href: "/welfare" },
     { label: "Track Dispatch", href: "/tracking" },
-    { label: "Co-op Trust & XAI", href: "/#trust" },
   ];
 
   return (
