@@ -22,6 +22,17 @@ export interface BookingState {
   addons: string[];
 }
 
+export interface CartItem {
+  id: string;
+  title: string;
+  price: number;
+  quantity: number;
+  category: string;
+  etaMinutes: number;
+  unitType: "instahelp" | "crew" | "pack" | "task";
+  workerPayout: number;
+}
+
 interface AppContextType {
   role: UserRole;
   setRole: (role: UserRole) => void;
@@ -41,6 +52,18 @@ interface AppContextType {
   setSelectedWorkerForBooking: (worker: WorkerProfile | null) => void;
   toastMessage: { title: string; desc: string; type?: "success" | "info" | "warning" } | null;
   showToast: (title: string, desc: string, type?: "success" | "info" | "warning") => void;
+  
+  // Snabbit / Pronto Cart & State
+  cartItems: CartItem[];
+  addToCart: (item: Omit<CartItem, "quantity">) => void;
+  removeFromCart: (id: string) => void;
+  clearCart: () => void;
+  activePackStudio: any | null;
+  setActivePackStudio: (pack: any | null) => void;
+  activeXAIModal: boolean;
+  setActiveXAIModal: (open: boolean) => void;
+  activePassportModal: boolean;
+  setActivePassportModal: (open: boolean) => void;
 }
 
 const AppContext = createContext<AppContextType | undefined>(undefined);
@@ -97,6 +120,37 @@ export function AppProvider({ children }: { children: React.ReactNode }) {
     }
   };
 
+  // Snabbit / Pronto Cart & State Implementation
+  const [cartItems, setCartItems] = useState<CartItem[]>([]);
+  const [activePackStudio, setActivePackStudio] = useState<any | null>(null);
+  const [activeXAIModal, setActiveXAIModal] = useState<boolean>(false);
+  const [activePassportModal, setActivePassportModal] = useState<boolean>(false);
+
+  const addToCart = (item: Omit<CartItem, "quantity">) => {
+    setCartItems((prev) => {
+      const existing = prev.find((i) => i.id === item.id);
+      if (existing) {
+        return prev.map((i) => (i.id === item.id ? { ...i, quantity: i.quantity + 1 } : i));
+      }
+      return [...prev, { ...item, quantity: 1 }];
+    });
+    showToast("Added to 15-Min Dispatch", `${item.title} added to quick checkout.`);
+  };
+
+  const removeFromCart = (id: string) => {
+    setCartItems((prev) => {
+      const existing = prev.find((i) => i.id === id);
+      if (existing && existing.quantity > 1) {
+        return prev.map((i) => (i.id === id ? { ...i, quantity: i.quantity - 1 } : i));
+      }
+      return prev.filter((i) => i.id !== id);
+    });
+  };
+
+  const clearCart = () => {
+    setCartItems([]);
+  };
+
   return (
     <AppContext.Provider
       value={{
@@ -118,6 +172,16 @@ export function AppProvider({ children }: { children: React.ReactNode }) {
         setSelectedWorkerForBooking,
         toastMessage,
         showToast,
+        cartItems,
+        addToCart,
+        removeFromCart,
+        clearCart,
+        activePackStudio,
+        setActivePackStudio,
+        activeXAIModal,
+        setActiveXAIModal,
+        activePassportModal,
+        setActivePassportModal,
       }}
     >
       {children}

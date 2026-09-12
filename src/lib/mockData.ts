@@ -552,3 +552,402 @@ export const BATCH_POOL_ITEMS: BatchPoolItem[] = [
     assignedWorkerTeam: ["Sunita Devi Sharma", "Lakshmi Priya Murthy"],
   },
 ];
+
+// ==========================================
+// ABC.MD INNOVATION 1: FLEXIBLE SERVICE UNITS
+// ==========================================
+
+// A. Hourly Time Blocks (Instahelp)
+export interface InstahelpBlock {
+  id: string;
+  durationHours: number;
+  title: string;
+  subtitle: string;
+  tagline: string;
+  priceINR: number;
+  workerGuaranteedTakeHome: number;
+  arrivalMinutes: number;
+  icon: string;
+  popularTasks: string[];
+  explicitExclusions: string[];
+  isPopular?: boolean;
+}
+
+export const INSTAHELP_BLOCKS: InstahelpBlock[] = [
+  {
+    id: "block-1hr",
+    durationHours: 1,
+    title: "1-Hour Quick Fix",
+    subtitle: "Urgent Single-Problem Resolution",
+    tagline: "Ideal for 1-2 small immediate repairs",
+    priceINR: 179,
+    workerGuaranteedTakeHome: 150,
+    arrivalMinutes: 12,
+    icon: "Zap",
+    popularTasks: ["Switchboard spark repair", "Single tap washer leak", "Door handle fix", "Bulb/holder replacement"],
+    explicitExclusions: ["Full house rewiring", "Structural masonry", "Appliance motor winding"],
+  },
+  {
+    id: "block-2hr",
+    durationHours: 2,
+    title: "2-Hour Handyman",
+    subtitle: "Multi-Task Punchlist Blitz",
+    tagline: "Clear 4-6 pending household fixes in one go",
+    priceINR: 299,
+    workerGuaranteedTakeHome: 255,
+    arrivalMinutes: 15,
+    icon: "Wrench",
+    isPopular: true,
+    popularTasks: ["Drill & mount 4 shelves/curtains", "Fix 2 leaking faucets", "Ceiling fan regulator replacement", "Kitchen sink drain unclog"],
+    explicitExclusions: ["Full bathroom renovation", "Balcony tiling", "Major civil works"],
+  },
+  {
+    id: "block-3hr",
+    durationHours: 3,
+    title: "3-Hour Home Helper",
+    subtitle: "Deep Domestic & Clean Reset",
+    tagline: "Intensive help for cleaning, prep, or reorganization",
+    priceINR: 449,
+    workerGuaranteedTakeHome: 385,
+    arrivalMinutes: 20,
+    icon: "Sparkles",
+    popularTasks: ["Deep kitchen degreasing", "Wardrobe reorganization", "Balcony wash & scrubbing", "Post-party cleanup"],
+    explicitExclusions: ["Hazardous chemical handling", "Exterior facade climbing"],
+  },
+  {
+    id: "block-4hr",
+    durationHours: 4,
+    title: "4-Hour Half-Day Pro",
+    subtitle: "Comprehensive Maintenance Shift",
+    tagline: "Full half-day dedicated craftsman at co-op rates",
+    priceINR: 599,
+    workerGuaranteedTakeHome: 520,
+    arrivalMinutes: 25,
+    icon: "HardHat",
+    popularTasks: ["Complete electrical checkup", "Furniture repair & hinge tuning", "Water pressure pump check", "Door lock overhauls"],
+    explicitExclusions: ["Commercial industrial machinery", "3-phase power line tapping"],
+  },
+];
+
+// B. Pre-Formed Multi-Skill Crews
+export interface CrewMemberSplit {
+  role: string;
+  name: string;
+  avatar: string;
+  rating: number;
+  percentageSplit: number;
+  payoutINR: number;
+}
+
+export interface MultiSkillCrew {
+  id: string;
+  name: string;
+  tagline: string;
+  totalPriceINR: number;
+  durationHours: number;
+  responseGuaranteeMin: number;
+  teamLead: string;
+  leadAvatar: string;
+  totalCompletedJobs: number;
+  crewRating: number;
+  category: string;
+  members: CrewMemberSplit[];
+  scopeDeliverables: string[];
+}
+
+export const MULTI_SKILL_CREWS: MultiSkillCrew[] = [
+  {
+    id: "crew-movein",
+    name: "New Home Move-In Crew",
+    tagline: "Electrician + Plumber + Sanitization Lead deployed simultaneously",
+    totalPriceINR: 1499,
+    durationHours: 3,
+    responseGuaranteeMin: 30,
+    teamLead: "Rajesh Kumar (Lead Electrician)",
+    leadAvatar: "https://images.unsplash.com/photo-1540569014015-19a7be504e3a?w=150&auto=format&fit=crop&q=80",
+    totalCompletedJobs: 148,
+    crewRating: 4.94,
+    category: "Move-In Readiness",
+    members: [
+      {
+        role: "Lead Electrician",
+        name: "Rajesh Kumar",
+        avatar: "https://images.unsplash.com/photo-1540569014015-19a7be504e3a?w=150&auto=format&fit=crop&q=80",
+        rating: 4.95,
+        percentageSplit: 45,
+        payoutINR: 675,
+      },
+      {
+        role: "Sanitary Plumber",
+        name: "Mohammad Arif",
+        avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&auto=format&fit=crop&q=80",
+        rating: 4.90,
+        percentageSplit: 35,
+        payoutINR: 525,
+      },
+      {
+        role: "Deep Hygiene Tech",
+        name: "Sunita Devi",
+        avatar: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=150&auto=format&fit=crop&q=80",
+        rating: 4.98,
+        percentageSplit: 20,
+        payoutINR: 299,
+      },
+    ],
+    scopeDeliverables: [
+      "Total DB & MCB safety tripping check",
+      "Geyser, RO & overhead tank pressure seal test",
+      "Bathroom antibacterial steam sanitization",
+      "Lock cylinders & door latch alignment",
+    ],
+  },
+  {
+    id: "crew-monsoon",
+    name: "Monsoon Leak & Drain Defense Crew",
+    tagline: "Dual-expert squad: Roofer/Mason + High-Pressure Drain Specialist",
+    totalPriceINR: 1199,
+    durationHours: 2.5,
+    responseGuaranteeMin: 20,
+    teamLead: "Mohammad Arif (Drain Specialist)",
+    leadAvatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&auto=format&fit=crop&q=80",
+    totalCompletedJobs: 215,
+    crewRating: 4.91,
+    category: "Weather Protection",
+    members: [
+      {
+        role: "Lead Drain Specialist",
+        name: "Mohammad Arif",
+        avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&auto=format&fit=crop&q=80",
+        rating: 4.90,
+        percentageSplit: 55,
+        payoutINR: 660,
+      },
+      {
+        role: "Mason & Waterproofing Pro",
+        name: "Gopal Prasad",
+        avatar: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=150&auto=format&fit=crop&q=80",
+        rating: 4.88,
+        percentageSplit: 45,
+        payoutINR: 539,
+      },
+    ],
+    scopeDeliverables: [
+      "Roof drain pipe camera & clearance check",
+      "Balcony waterproofing grout seal inspection",
+      "Sump pump switch & automatic float sensor test",
+    ],
+  },
+  {
+    id: "crew-festival",
+    name: "Festival Sparkle & Appliance Crew",
+    tagline: "3-craftsmen team: 2 Deep Cleaners + 1 Appliance Electrical Tech",
+    totalPriceINR: 1899,
+    durationHours: 4,
+    responseGuaranteeMin: 45,
+    teamLead: "Lakshmi Priya (Senior Hygiene Lead)",
+    leadAvatar: "https://images.unsplash.com/photo-1567532939604-b6b5b0db2604?w=150&auto=format&fit=crop&q=80",
+    totalCompletedJobs: 340,
+    crewRating: 4.97,
+    category: "Seasonal Renewal",
+    members: [
+      {
+        role: "Senior Hygiene Lead",
+        name: "Lakshmi Priya",
+        avatar: "https://images.unsplash.com/photo-1567532939604-b6b5b0db2604?w=150&auto=format&fit=crop&q=80",
+        rating: 4.97,
+        percentageSplit: 40,
+        payoutINR: 760,
+      },
+      {
+        role: "Appliance & Light Tech",
+        name: "Rajesh Kumar",
+        avatar: "https://images.unsplash.com/photo-1540569014015-19a7be504e3a?w=150&auto=format&fit=crop&q=80",
+        rating: 4.95,
+        percentageSplit: 30,
+        payoutINR: 570,
+      },
+      {
+        role: "Glass & Floor Polisher",
+        name: "Sunita Devi",
+        avatar: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=150&auto=format&fit=crop&q=80",
+        rating: 4.98,
+        percentageSplit: 30,
+        payoutINR: 569,
+      },
+    ],
+    scopeDeliverables: [
+      "Exhaust, chimney & microwave degrease",
+      "Festive lighting setup & decorative switchboard check",
+      "Floor high-speed scrubbing & stain extraction",
+    ],
+  },
+];
+
+// C. Outcome-Based Service Packs & Pack Studio Tasks
+export interface PackTaskItem {
+  id: string;
+  name: string;
+  craft: string;
+  defaultIncluded: boolean;
+  priceDeltaINR: number;
+  durationMinutes: number;
+}
+
+export interface OutcomePack {
+  id: string;
+  title: string;
+  outcomeHeadline: string;
+  description: string;
+  basePriceINR: number;
+  workerGuaranteedCut: number;
+  estimatedHours: number;
+  badge: string;
+  tasks: PackTaskItem[];
+}
+
+export const OUTCOME_PACKS: OutcomePack[] = [
+  {
+    id: "pack-festival",
+    title: "Festival-Ready Home Pack",
+    outcomeHeadline: "Complete festive shine & electrical safety in one booking",
+    description: "Designed by the Craftsmen Guild for Diwali, Pongal, and celebrations. Guaranteed 100% itemized wages.",
+    basePriceINR: 1299,
+    workerGuaranteedCut: 1065,
+    estimatedHours: 3.5,
+    badge: "Most Popular",
+    tasks: [
+      { id: "t1", name: "Living room & Puja room deep clean", craft: "Cleaning", defaultIncluded: true, priceDeltaINR: 350, durationMinutes: 60 },
+      { id: "t2", name: "Exhaust fan & ceiling fan blade degrease", craft: "Electrical", defaultIncluded: true, priceDeltaINR: 250, durationMinutes: 40 },
+      { id: "t3", name: "Decorative string lights safely routed to MCB", craft: "Electrical", defaultIncluded: true, priceDeltaINR: 300, durationMinutes: 45 },
+      { id: "t4", name: "Kitchen counter & chimney degreasing", craft: "Cleaning", defaultIncluded: true, priceDeltaINR: 399, durationMinutes: 50 },
+      { id: "t5", name: "Front door brass handle polish & lock lubrication", craft: "Carpentry", defaultIncluded: false, priceDeltaINR: 200, durationMinutes: 25 },
+    ],
+  },
+  {
+    id: "pack-eldercare",
+    title: "Elder Care Weekly Assurance Pack",
+    outcomeHeadline: "Home safety inspection + compassionate caregiver shift",
+    description: "Bathroom anti-skid check, medicine organizer review, mobility support, and emergency bell check.",
+    basePriceINR: 999,
+    workerGuaranteedCut: 840,
+    estimatedHours: 3,
+    badge: "Certified Pros",
+    tasks: [
+      { id: "e1", name: "3-Hour Certified Geriatric Caregiver Companion", craft: "Caregiver", defaultIncluded: true, priceDeltaINR: 450, durationMinutes: 180 },
+      { id: "e2", name: "Bathroom grab-bar tightness & anti-slip mat check", craft: "Handyman", defaultIncluded: true, priceDeltaINR: 250, durationMinutes: 30 },
+      { id: "e3", name: "Night light installation / corridor lighting check", craft: "Electrical", defaultIncluded: true, priceDeltaINR: 299, durationMinutes: 30 },
+      { id: "e4", name: "Emergency bedside call button test & battery renewal", craft: "Tech", defaultIncluded: false, priceDeltaINR: 180, durationMinutes: 20 },
+    ],
+  },
+  {
+    id: "pack-movein",
+    title: "Fresh Move-In Deep Prep Pack",
+    outcomeHeadline: "Move into a 100% sanitized, verified safe dwelling",
+    description: "Full sanitization, lock replacements, electrical grounding test, and plumbing flow audit.",
+    basePriceINR: 1599,
+    workerGuaranteedCut: 1320,
+    estimatedHours: 4,
+    badge: "Zero Hassle",
+    tasks: [
+      { id: "m1", name: "All bathroom steam sanitization & WC descaling", craft: "Cleaning", defaultIncluded: true, priceDeltaINR: 500, durationMinutes: 90 },
+      { id: "m2", name: "Main door safety lock cylinder change", craft: "Carpentry", defaultIncluded: true, priceDeltaINR: 400, durationMinutes: 45 },
+      { id: "m3", name: "Earthing & polarity check on all power sockets", craft: "Electrical", defaultIncluded: true, priceDeltaINR: 400, durationMinutes: 45 },
+      { id: "m4", name: "Kitchen sink trap replacement & leak check", craft: "Plumbing", defaultIncluded: true, priceDeltaINR: 299, durationMinutes: 40 },
+    ],
+  },
+];
+
+// ==========================================
+// ABC.MD INNOVATION 2: EXPLAINABLE AI (XAI)
+// ==========================================
+
+export interface SHAPFeature {
+  feature: string;
+  shapValue: number; // positive = pushes toward selection
+  description: string;
+  category: "skill" | "availability" | "proximity" | "fairness";
+}
+
+export interface XAIMatchExplanation {
+  workerId: string;
+  workerName: string;
+  craft: string;
+  confidenceScore: number; // 0-1
+  shapFeatures: SHAPFeature[];
+  giniFairnessIndex: number;
+  hoursWorkedThisWeek: number;
+  arbitrationAppealAvailable: boolean;
+}
+
+export const SAMPLE_XAI_EXPLANATION: XAIMatchExplanation = {
+  workerId: "w-01",
+  workerName: "Rajesh Kumar",
+  craft: "Certified Electrician",
+  confidenceScore: 0.94,
+  shapFeatures: [
+    { feature: "NSDC Tier-3 Skill Certification", shapValue: +0.32, description: "Master Electrician certification from Karnataka Skill Dev Corp", category: "skill" },
+    { feature: "Shift & Availability Alignment", shapValue: +0.28, description: "Instant 15-minute response slot available in Indiranagar", category: "availability" },
+    { feature: "Hyper-Local Proximity (1.2 km)", shapValue: +0.15, description: "Reduced travel time and low carbon transit footprint", category: "proximity" },
+    { feature: "Welfare Workload Balance (+0.12)", shapValue: +0.12, description: "Within optimal weekly limit (26/36 hrs), preventing worker burnout", category: "fairness" },
+  ],
+  giniFairnessIndex: 0.24,
+  hoursWorkedThisWeek: 26,
+  arbitrationAppealAvailable: true,
+};
+
+// ==========================================
+// ABC.MD INNOVATION 3: WORKER PASSPORT & TRUST
+// ==========================================
+
+export interface WorkerPassportData {
+  uanNumber: string; // e-Shram UAN
+  aadhaarKycStatus: "Verified" | "Pending";
+  nsdcCertificateId: string;
+  gnnTrustScore: number; // 0-100
+  multiHopNeighboursCount: number;
+  separateQualityRating: number;
+  separateWomenSafetyRating: number;
+  federatedLearningOptIn: boolean;
+  minimumEarningsFloorINR: number;
+  activeInsuranceCoverINR: number;
+}
+
+export const SAMPLE_WORKER_PASSPORT: WorkerPassportData = {
+  uanNumber: "UAN-8821-4401-9012",
+  aadhaarKycStatus: "Verified",
+  nsdcCertificateId: "NSDC/2023/ELEC/KA-99120",
+  gnnTrustScore: 94,
+  multiHopNeighboursCount: 38,
+  separateQualityRating: 4.94,
+  separateWomenSafetyRating: 5.0,
+  federatedLearningOptIn: true,
+  minimumEarningsFloorINR: 10000,
+  activeInsuranceCoverINR: 200000,
+};
+
+// ==========================================
+// PARAMETRIC MICRO-INSURANCE & LIVE DISRUPTION
+// ==========================================
+
+export interface ParametricAlert {
+  id: string;
+  weatherStation: string;
+  triggerCondition: string;
+  currentValue: string;
+  status: "ACTIVE_DISRUPTION" | "NORMAL";
+  autoPayoutAmountINR: number;
+  beneficiariesCount: number;
+  lastPayoutTime: string;
+}
+
+export const ACTIVE_PARAMETRIC_ALERT: ParametricAlert = {
+  id: "disrupt-blr-east",
+  weatherStation: "Bengaluru East IMD Automated Sensor",
+  triggerCondition: "Heavy Rainfall > 45mm/hr",
+  currentValue: "52 mm/hr (Level 2 Monsoon Alert)",
+  status: "ACTIVE_DISRUPTION",
+  autoPayoutAmountINR: 850,
+  beneficiariesCount: 42,
+  lastPayoutTime: "12 mins ago directly via UPI Lite",
+};
+
