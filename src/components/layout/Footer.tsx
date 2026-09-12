@@ -2,164 +2,176 @@
 
 import React from "react";
 import Link from "next/link";
-import { ShieldCheck, Award, ArrowUpRight, CheckCircle2, Lock } from "lucide-react";
+import { ShieldCheck, Award, ArrowUpRight, CheckCircle2, Lock, Sparkles, Umbrella, HeartPulse } from "lucide-react";
 
 export default function Footer() {
   return (
-    <footer className="w-full bg-[#0b1a12] text-[#edebe4] border-t border-[#1c3025] pt-16 pb-12 mt-24">
+    <footer className="w-full bg-slate-950 text-slate-400 border-t border-slate-800 pt-16 pb-12 mt-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 pb-12 border-b border-[#1c3025]">
-          {/* Column 1: Brand & Ministry Backing */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 pb-12 border-b border-slate-800/80">
+          {/* Column 1: Brand & Cooperative Operating System */}
           <div className="lg:col-span-2 space-y-4">
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-xl bg-[#193927] border border-[#2d6243] flex items-center justify-center text-[#f9f7f2] font-bold text-xl font-serif">
+              <div className="w-10 h-10 rounded-xl bg-slate-900 border border-slate-700 flex items-center justify-center text-white font-black text-xl">
                 स
               </div>
               <div className="flex flex-col">
-                <span className="text-2xl font-bold text-[#f9f7f2] font-serif">SahakarSeva</span>
-                <span className="text-xs text-[#8caea0] font-medium">
-                  Cooperative Digital Gig Services Platform
+                <span className="text-2xl font-black text-white tracking-tight">
+                  Sahakar<span className="text-white">Seva</span>
+                </span>
+                <span className="text-xs text-slate-400 font-medium">
+                  Cooperative Digital Services Operating System
                 </span>
               </div>
             </div>
 
-            <p className="text-xs text-[#8caea0] leading-relaxed max-w-sm">
-              Built under Smart India Hackathon PS 26089 for the Ministry of Cooperation & NCCT. Empowering gig workers through worker-owned cooperatives, democratic rate governance, and 100% itemized wage transparency.
+            <p className="text-xs text-slate-400 leading-relaxed max-w-sm">
+              Cooperative-owned marketplace transforming home and community services across India. Governed democratically by Labour Cooperative Federations with 83%+ direct worker payout, sovereign e-Shram passports, and parametric climate safety.
             </p>
 
             <div className="flex flex-wrap items-center gap-3 pt-2">
-              <div className="flex items-center gap-2 bg-[#13261c] border border-[#244230] px-3 py-1.5 rounded-lg text-xs font-semibold text-[#c5d7cc]">
-                <ShieldCheck className="w-4 h-4 text-[#4b7d5e]" />
-                <span>Verified by NCCT</span>
+              <div className="flex items-center gap-2 bg-slate-900 border border-slate-800 px-3 py-1.5 rounded-xl text-xs font-semibold text-slate-300">
+                <ShieldCheck className="w-4 h-4 text-emerald-500" />
+                <span>e-Shram & Aadhaar KYC</span>
               </div>
-              <div className="flex items-center gap-2 bg-[#13261c] border border-[#244230] px-3 py-1.5 rounded-lg text-xs font-semibold text-[#c5d7cc]">
-                <Award className="w-4 h-4 text-[#855b16]" />
-                <span>Worker Owned</span>
+              <div className="flex items-center gap-2 bg-slate-900 border border-slate-800 px-3 py-1.5 rounded-xl text-xs font-semibold text-slate-300">
+                <Umbrella className="w-4 h-4 text-sky-400" />
+                <span>Parametric Weather Shield</span>
               </div>
             </div>
           </div>
 
-          {/* Column 2: Customer Services */}
+          {/* Column 2: 10 Cooperative Crafts */}
           <div className="space-y-3 text-xs">
-            <h4 className="text-xs font-bold text-[#f9f7f2] uppercase tracking-wider">
-              Service Guilds
+            <h4 className="text-xs font-extrabold text-white uppercase tracking-wider">
+              Cooperative Crafts
             </h4>
-            <ul className="space-y-2 text-[#8caea0]">
+            <ul className="space-y-2 text-slate-400 font-medium">
               <li>
-                <Link href="/services?category=electrician" className="hover:text-[#f9f7f2] transition">
-                  Electrical & Switchboard
+                <Link href="/services?category=electrician" className="hover:text-white transition">
+                  Electrical & Repairs
                 </Link>
               </li>
               <li>
-                <Link href="/services?category=plumber" className="hover:text-[#f9f7f2] transition">
-                  Plumbing & Sanitation
+                <Link href="/services?category=plumber" className="hover:text-white transition">
+                  Plumbing & Sanitary
                 </Link>
               </li>
               <li>
-                <Link href="/services?category=carpenter" className="hover:text-[#f9f7f2] transition">
-                  Carpentry & Furniture
+                <Link href="/services?category=carpenter" className="hover:text-white transition">
+                  Carpentry & Woodwork
                 </Link>
               </li>
               <li>
-                <Link href="/services?category=domestic_help" className="hover:text-[#f9f7f2] transition">
-                  Domestic & Cook Services
+                <Link href="/services?category=cleaner" className="hover:text-white transition">
+                  Deep Cleaning & Sanitization
                 </Link>
               </li>
               <li>
-                <Link href="/services?category=caregiver" className="hover:text-[#f9f7f2] transition">
-                  Elder Healthcare & Nursing
+                <Link href="/services?category=domestic_help" className="hover:text-white transition">
+                  Domestic & Kitchen Help
                 </Link>
               </li>
               <li>
-                <Link href="/heritage" className="text-[#be522d] hover:underline flex items-center gap-1 font-semibold">
-                  <span>Heritage Master Artisans</span>
+                <Link href="/services?category=caregiver" className="hover:text-white transition">
+                  Elder & Patient Care
+                </Link>
+              </li>
+              <li>
+                <Link href="/services" className="text-white hover:underline flex items-center gap-1 font-bold pt-1">
+                  <span>View all 10 guilds</span>
                   <ArrowUpRight className="w-3 h-3" />
                 </Link>
               </li>
             </ul>
           </div>
 
-          {/* Column 3: For Workers & Cooperatives */}
+          {/* Column 3: For Cooperative Craftsmen */}
           <div className="space-y-3 text-xs">
-            <h4 className="text-xs font-bold text-[#f9f7f2] uppercase tracking-wider">
-              For Gig Workers
+            <h4 className="text-xs font-extrabold text-white uppercase tracking-wider">
+              Worker Sovereignty
             </h4>
-            <ul className="space-y-2 text-[#8caea0]">
+            <ul className="space-y-2 text-slate-400 font-medium">
               <li>
-                <Link href="/worker" className="hover:text-[#f9f7f2] transition">
-                  Join Worker Cooperative
+                <Link href="/worker" className="hover:text-white transition">
+                  Worker Pro Dashboard
                 </Link>
               </li>
               <li>
-                <Link href="/worker/collective-bargaining" className="hover:text-[#f9f7f2] transition">
-                  Democratic Rate Bargaining
+                <Link href="/worker/collective-bargaining" className="hover:text-white transition">
+                  Democratic Rate Voting
                 </Link>
               </li>
               <li>
-                <Link href="/worker/safety" className="hover:text-[#f9f7f2] transition">
-                  Gender-First Women Safety
+                <Link href="/worker/safety" className="hover:text-white transition">
+                  Women-First Safety Module
                 </Link>
               </li>
               <li>
-                <Link href="/worker/appeal" className="hover:text-[#f9f7f2] transition">
+                <Link href="/worker/appeal" className="hover:text-white transition">
                   Arbitration Appeal Panel
                 </Link>
               </li>
               <li>
-                <Link href="/about#wage-philosophy" className="hover:text-[#f9f7f2] transition">
-                  82% Direct Pay Ledger
+                <Link href="/about" className="hover:text-white transition">
+                  ₹10,000/mo MEG Floor
+                </Link>
+              </li>
+              <li>
+                <Link href="/emergency" className="text-rose-400 hover:text-rose-300 transition font-bold">
+                  24/7 SOS Emergency Cell
                 </Link>
               </li>
             </ul>
           </div>
 
-          {/* Column 4: Trust & Transparency */}
+          {/* Column 4: Platform Intelligence & Governance */}
           <div className="space-y-3 text-xs">
-            <h4 className="text-xs font-bold text-[#f9f7f2] uppercase tracking-wider">
-              Federations & Policy
+            <h4 className="text-xs font-extrabold text-white uppercase tracking-wider">
+              Governance & AI
             </h4>
-            <ul className="space-y-2 text-[#8caea0]">
+            <ul className="space-y-2 text-slate-400 font-medium">
               <li>
-                <Link href="/admin" className="hover:text-[#f9f7f2] transition">
+                <Link href="/admin" className="hover:text-white transition">
                   Federation Admin Portal
                 </Link>
               </li>
               <li>
-                <Link href="/admin/forecasting" className="hover:text-[#f9f7f2] transition">
-                  AI Demand Forecasting
+                <Link href="/admin/forecasting" className="hover:text-white transition">
+                  GNN Demand Forecasting
                 </Link>
               </li>
               <li>
-                <Link href="/admin/redistribution" className="hover:text-[#f9f7f2] transition">
-                  Crisis Mode Equity Engine
+                <Link href="/admin/redistribution" className="hover:text-white transition">
+                  Vulnerability Equity Engine
                 </Link>
               </li>
               <li>
-                <Link href="/admin/batch-pooling" className="hover:text-[#f9f7f2] transition">
-                  Neighborhood Batch Routes
+                <Link href="/admin/batch-pooling" className="hover:text-white transition">
+                  Transit Batch Optimizer
                 </Link>
               </li>
               <li>
-                <Link href="/about" className="hover:text-[#f9f7f2] transition">
-                  Ministry PS 26089 Guidelines
+                <Link href="/about" className="hover:text-white transition">
+                  Explainable AI (SHAP / LIME)
                 </Link>
               </li>
             </ul>
           </div>
         </div>
 
-        {/* Bottom copyright bar */}
-        <div className="pt-8 flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-[#7c8d82]">
+        {/* Bottom copyright & certification bar */}
+        <div className="pt-8 flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-slate-500">
           <div>
-            <span>© 2026 SahakarSeva Cooperative Platform. Built for SIH PS 26089.</span>
+            <span>© 2026 SahakarSeva Cooperative Federation Operating System. Governed under National Labour Cooperative Standards.</span>
           </div>
 
           <div className="flex items-center gap-6">
-            <span className="flex items-center gap-1.5 text-[#a3b8ac]">
-              <Lock className="w-3.5 h-3.5 text-[#4b7d5e]" /> 100% Encrypted & Worker Owned
+            <span className="flex items-center gap-1.5 text-slate-400 font-medium">
+              <Lock className="w-3.5 h-3.5 text-emerald-500" /> On-Device Federated Privacy
             </span>
-            <span className="flex items-center gap-1.5 text-[#a3b8ac]">
-              <CheckCircle2 className="w-3.5 h-3.5 text-[#4b7d5e]" /> NCCT Governance Standard
+            <span className="flex items-center gap-1.5 text-slate-400 font-medium">
+              <CheckCircle2 className="w-3.5 h-3.5 text-emerald-500" /> 100% Itemized Wage Ledger
             </span>
           </div>
         </div>

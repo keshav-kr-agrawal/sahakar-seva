@@ -7,6 +7,7 @@ export interface ServiceCategory {
   startingPrice: number;
   popular: boolean;
   itemCount: number;
+  imageUrl?: string;
 }
 
 export interface WorkerProfile {
@@ -100,6 +101,7 @@ export const SERVICE_CATEGORIES: ServiceCategory[] = [
     startingPrice: 299,
     popular: true,
     itemCount: 42,
+    imageUrl: "https://images.unsplash.com/photo-1621905251189-08b45d6a269e?w=400&auto=format&fit=crop&q=80",
   },
   {
     id: "plumber",
@@ -110,6 +112,7 @@ export const SERVICE_CATEGORIES: ServiceCategory[] = [
     startingPrice: 349,
     popular: true,
     itemCount: 38,
+    imageUrl: "https://images.unsplash.com/photo-1585704032915-c3400ca199e7?w=400&auto=format&fit=crop&q=80",
   },
   {
     id: "carpenter",
@@ -120,6 +123,7 @@ export const SERVICE_CATEGORIES: ServiceCategory[] = [
     startingPrice: 399,
     popular: true,
     itemCount: 29,
+    imageUrl: "https://images.unsplash.com/photo-1504148455328-c376907d081c?w=400&auto=format&fit=crop&q=80",
   },
   {
     id: "painter",
@@ -130,6 +134,7 @@ export const SERVICE_CATEGORIES: ServiceCategory[] = [
     startingPrice: 599,
     popular: false,
     itemCount: 31,
+    imageUrl: "https://images.unsplash.com/photo-1589939705384-5185137a7f0f?w=400&auto=format&fit=crop&q=80",
   },
   {
     id: "domestic_help",
@@ -140,6 +145,7 @@ export const SERVICE_CATEGORIES: ServiceCategory[] = [
     startingPrice: 249,
     popular: true,
     itemCount: 64,
+    imageUrl: "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?w=400&auto=format&fit=crop&q=80",
   },
   {
     id: "caregiver",
@@ -150,6 +156,7 @@ export const SERVICE_CATEGORIES: ServiceCategory[] = [
     startingPrice: 499,
     popular: true,
     itemCount: 22,
+    imageUrl: "https://images.unsplash.com/photo-1576765608535-5f04d1e3f289?w=400&auto=format&fit=crop&q=80",
   },
   {
     id: "driver",
@@ -160,6 +167,7 @@ export const SERVICE_CATEGORIES: ServiceCategory[] = [
     startingPrice: 299,
     popular: false,
     itemCount: 35,
+    imageUrl: "https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?w=400&auto=format&fit=crop&q=80",
   },
   {
     id: "gardener",
@@ -170,6 +178,7 @@ export const SERVICE_CATEGORIES: ServiceCategory[] = [
     startingPrice: 349,
     popular: false,
     itemCount: 18,
+    imageUrl: "https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=400&auto=format&fit=crop&q=80",
   },
   {
     id: "cleaner",
@@ -180,6 +189,7 @@ export const SERVICE_CATEGORIES: ServiceCategory[] = [
     startingPrice: 449,
     popular: true,
     itemCount: 52,
+    imageUrl: "https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=400&auto=format&fit=crop&q=80",
   },
   {
     id: "appliance_tech",
@@ -190,6 +200,7 @@ export const SERVICE_CATEGORIES: ServiceCategory[] = [
     startingPrice: 399,
     popular: true,
     itemCount: 46,
+    imageUrl: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&auto=format&fit=crop&q=80",
   },
 ];
 
@@ -571,6 +582,7 @@ export interface InstahelpBlock {
   popularTasks: string[];
   explicitExclusions: string[];
   isPopular?: boolean;
+  imageUrl?: string;
 }
 
 export const INSTAHELP_BLOCKS: InstahelpBlock[] = [
@@ -586,6 +598,7 @@ export const INSTAHELP_BLOCKS: InstahelpBlock[] = [
     icon: "Zap",
     popularTasks: ["Switchboard spark repair", "Single tap washer leak", "Door handle fix", "Bulb/holder replacement"],
     explicitExclusions: ["Full house rewiring", "Structural masonry", "Appliance motor winding"],
+    imageUrl: "https://images.unsplash.com/photo-1581092921461-eab62e97a780?w=500&auto=format&fit=crop&q=80",
   },
   {
     id: "block-2hr",
@@ -600,6 +613,7 @@ export const INSTAHELP_BLOCKS: InstahelpBlock[] = [
     isPopular: true,
     popularTasks: ["Drill & mount 4 shelves/curtains", "Fix 2 leaking faucets", "Ceiling fan regulator replacement", "Kitchen sink drain unclog"],
     explicitExclusions: ["Full bathroom renovation", "Balcony tiling", "Major civil works"],
+    imageUrl: "https://images.unsplash.com/photo-1504148455328-c376907d081c?w=500&auto=format&fit=crop&q=80",
   },
   {
     id: "block-3hr",
@@ -613,6 +627,7 @@ export const INSTAHELP_BLOCKS: InstahelpBlock[] = [
     icon: "Sparkles",
     popularTasks: ["Deep kitchen degreasing", "Wardrobe reorganization", "Balcony wash & scrubbing", "Post-party cleanup"],
     explicitExclusions: ["Hazardous chemical handling", "Exterior facade climbing"],
+    imageUrl: "https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=500&auto=format&fit=crop&q=80",
   },
   {
     id: "block-4hr",
@@ -626,6 +641,7 @@ export const INSTAHELP_BLOCKS: InstahelpBlock[] = [
     icon: "HardHat",
     popularTasks: ["Complete electrical checkup", "Furniture repair & hinge tuning", "Water pressure pump check", "Door lock overhauls"],
     explicitExclusions: ["Commercial industrial machinery", "3-phase power line tapping"],
+    imageUrl: "https://images.unsplash.com/photo-1621905251189-08b45d6a269e?w=500&auto=format&fit=crop&q=80",
   },
 ];
 
@@ -803,6 +819,7 @@ export interface OutcomePack {
   estimatedHours: number;
   badge: string;
   tasks: PackTaskItem[];
+  imageUrl?: string;
 }
 
 export const OUTCOME_PACKS: OutcomePack[] = [
@@ -815,6 +832,7 @@ export const OUTCOME_PACKS: OutcomePack[] = [
     workerGuaranteedCut: 1065,
     estimatedHours: 3.5,
     badge: "Most Popular",
+    imageUrl: "https://images.unsplash.com/photo-1513151233558-d860c5398176?w=500&auto=format&fit=crop&q=80",
     tasks: [
       { id: "t1", name: "Living room & Puja room deep clean", craft: "Cleaning", defaultIncluded: true, priceDeltaINR: 350, durationMinutes: 60 },
       { id: "t2", name: "Exhaust fan & ceiling fan blade degrease", craft: "Electrical", defaultIncluded: true, priceDeltaINR: 250, durationMinutes: 40 },
@@ -832,6 +850,7 @@ export const OUTCOME_PACKS: OutcomePack[] = [
     workerGuaranteedCut: 840,
     estimatedHours: 3,
     badge: "Certified Pros",
+    imageUrl: "https://images.unsplash.com/photo-1576765608535-5f04d1e3f289?w=500&auto=format&fit=crop&q=80",
     tasks: [
       { id: "e1", name: "3-Hour Certified Geriatric Caregiver Companion", craft: "Caregiver", defaultIncluded: true, priceDeltaINR: 450, durationMinutes: 180 },
       { id: "e2", name: "Bathroom grab-bar tightness & anti-slip mat check", craft: "Handyman", defaultIncluded: true, priceDeltaINR: 250, durationMinutes: 30 },
@@ -848,6 +867,7 @@ export const OUTCOME_PACKS: OutcomePack[] = [
     workerGuaranteedCut: 1320,
     estimatedHours: 4,
     badge: "Zero Hassle",
+    imageUrl: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=500&auto=format&fit=crop&q=80",
     tasks: [
       { id: "m1", name: "All bathroom steam sanitization & WC descaling", craft: "Cleaning", defaultIncluded: true, priceDeltaINR: 500, durationMinutes: 90 },
       { id: "m2", name: "Main door safety lock cylinder change", craft: "Carpentry", defaultIncluded: true, priceDeltaINR: 400, durationMinutes: 45 },

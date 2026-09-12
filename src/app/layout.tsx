@@ -6,8 +6,8 @@ import Footer from "@/components/layout/Footer";
 import Toast from "@/components/ui/Toast";
 
 export const metadata: Metadata = {
-  title: "SahakarSeva | Cooperative Digital Marketplace for Household Services",
-  description: "Built for Ministry of Cooperation / NCCT (SIH PS 26089). Empowering gig workers through worker-owned cooperatives, democratic rate governance, and 100% itemized wage transparency.",
+  title: "SahakarSeva | Cooperative Digital Services Platform",
+  description: "India's first worker-owned digital marketplace for household and community services. 15-minute guaranteed arrival, 83%+ direct worker payout, sovereign e-Shram passports, and 0% platform extraction.",
 };
 
 export default function RootLayout({
@@ -21,7 +21,7 @@ export default function RootLayout({
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link
-          href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..800;1,9..144,400..800&family=Plus+Jakarta+Sans:ital,wght@0,300..800;1,300..800&display=swap"
+          href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300..800;1,300..800&family=Inter:wght@300..800&display=swap"
           rel="stylesheet"
         />
         {/* Auto-unregister any stale service worker from other localhost projects */}
@@ -39,9 +39,9 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body className="antialiased min-h-screen flex flex-col justify-between selection:bg-[#224c34] selection:text-[#f9f7f2]">
+      <body className="antialiased min-h-screen flex flex-col justify-between selection:bg-slate-900 selection:text-white bg-white text-slate-900 font-sans">
         <AppProvider>
-          {/* 21st.dev Style Floating Clean Header */}
+          {/* 21st.dev Style Floating Header */}
           <Navbar />
 
           {/* Main Page Content */}

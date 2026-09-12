@@ -9,8 +9,7 @@ import { useRouter } from "next/navigation";
 
 export default function FloatingDispatchCart() {
   const router = useRouter();
-  const { cartItems, removeFromCart, clearCart, showToast } = useApp();
-  const [isCheckoutOpen, setIsCheckoutOpen] = useState(false);
+  const { cartItems, removeFromCart, clearCart, showToast, isCartDrawerOpen, setIsCartDrawerOpen } = useApp();
 
   if (cartItems.length === 0) return null;
 
@@ -20,7 +19,7 @@ export default function FloatingDispatchCart() {
   const workerPayoutTotal = Math.round(totalAmount * 0.83);
 
   const handleConfirmOrder = () => {
-    setIsCheckoutOpen(false);
+    setIsCartDrawerOpen(false);
     clearCart();
     showToast("15-Min Dispatch Confirmed", "Assigned nearest co-op craftsman in Indiranagar Ward 112.");
     router.push("/tracking");
@@ -54,7 +53,7 @@ export default function FloatingDispatchCart() {
 
           {/* Right: Checkout Button */}
           <button
-            onClick={() => setIsCheckoutOpen(true)}
+            onClick={() => setIsCartDrawerOpen(true)}
             className="bg-white hover:bg-slate-100 text-slate-900 font-extrabold text-xs px-4 py-2 rounded-full transition flex items-center gap-1.5 cursor-pointer shrink-0"
           >
             <span>View Dispatch</span>
@@ -65,7 +64,7 @@ export default function FloatingDispatchCart() {
 
       {/* Checkout Drawer / Modal */}
       <AnimatePresence>
-        {isCheckoutOpen && (
+        {isCartDrawerOpen && (
           <div className="fixed inset-0 z-50 flex items-end sm:items-center justify-center p-0 sm:p-4 bg-slate-950/50 backdrop-blur-sm">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -81,7 +80,7 @@ export default function FloatingDispatchCart() {
                 </div>
 
                 <button
-                  onClick={() => setIsCheckoutOpen(false)}
+                  onClick={() => setIsCartDrawerOpen(false)}
                   className="p-1 text-slate-400 hover:text-slate-700 rounded-full cursor-pointer"
                 >
                   <X className="w-5 h-5" />

@@ -58,6 +58,8 @@ interface AppContextType {
   addToCart: (item: Omit<CartItem, "quantity">) => void;
   removeFromCart: (id: string) => void;
   clearCart: () => void;
+  isCartDrawerOpen: boolean;
+  setIsCartDrawerOpen: (open: boolean) => void;
   activePackStudio: any | null;
   setActivePackStudio: (pack: any | null) => void;
   activeXAIModal: boolean;
@@ -122,6 +124,7 @@ export function AppProvider({ children }: { children: React.ReactNode }) {
 
   // Snabbit / Pronto Cart & State Implementation
   const [cartItems, setCartItems] = useState<CartItem[]>([]);
+  const [isCartDrawerOpen, setIsCartDrawerOpen] = useState<boolean>(false);
   const [activePackStudio, setActivePackStudio] = useState<any | null>(null);
   const [activeXAIModal, setActiveXAIModal] = useState<boolean>(false);
   const [activePassportModal, setActivePassportModal] = useState<boolean>(false);
@@ -176,6 +179,8 @@ export function AppProvider({ children }: { children: React.ReactNode }) {
         addToCart,
         removeFromCart,
         clearCart,
+        isCartDrawerOpen,
+        setIsCartDrawerOpen,
         activePackStudio,
         setActivePackStudio,
         activeXAIModal,

@@ -99,7 +99,7 @@ export default function CrewCard({ crew }: Props) {
       <div className="pt-3 border-t border-slate-100 flex items-center justify-between">
         <div>
           <span className="text-[10px] text-slate-400 font-medium block">
-            {crew.durationHours} Hours Dedicated
+            {crew.durationHours} {crew.durationHours === 1 ? "Hour" : "Hours"} Dedicated
           </span>
           <div className="text-xl font-black text-slate-900 font-mono">
             {formatINR(crew.totalPriceINR)}
